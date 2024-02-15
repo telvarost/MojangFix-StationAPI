@@ -9,31 +9,53 @@ sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
 group = project.maven_group
-
-def ENV = System.getenv()
-if (ENV.GITHUB_RUN_NUMBER) {
-    if (ENV.GITHUB_REF && ENV.GITHUB_REF.startsWith("refs/tags/")) {
-        version = project.mod_version
-        spotless.enforceCheck = false
-    } else {
-        version = project.mod_version + '-ci.' + ENV.GITHUB_RUN_NUMBER
-    }
-} else {
-    version = project.mod_version + '+local'
-}
+version = project.mod_version
 
 repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+
+    // Used for the fabric toolchain in this project.
     maven {
         name = 'Babric'
         url = 'https://maven.glass-launcher.net/babric'
     }
+    // Used for mappings.
     maven {
-        name = "Jitpack"
-        url = "https://jitpack.io/"
-        content {
-            includeGroup("com.github.GeyserMC")
+        name = 'Glass Releases'
+        url = 'https://maven.glass-launcher.net/releases'
+    }
+    // Used for StationAPI and HowManyItems.
+    maven {
+        name = 'Glass Snapshots'
+        url = 'https://maven.glass-launcher.net/snapshots'
+    }
+    // Used for a StationAPI dependency.
+    maven {
+        name = 'Froge'
+        url 'https://maven.minecraftforge.net/'
+    }
+    // Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
+    maven {
+        name = 'Jitpack'
+        url = 'https://jitpack.io'
+    }
+    // Used for another StationAPI dependency
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
         }
     }
+    mavenCentral()
 }
 
 loom {
@@ -49,12 +71,26 @@ dependencies {
 
     implementation "org.slf4j:slf4j-api:1.8.0-beta4"
     implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
+    implementation "blue.endless:jankson:1.2.1"
 
     def lombok = "org.projectlombok:lombok:1.18.22"
     compileOnly lombok
     annotationProcessor lombok
 
     include(implementation("com.github.GeyserMC:MCAuthLib:d9d773e5d50327c33898c65cd545a4f6ef3ba1b5"))
+
+    modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
+
+    // Optional, but convenient mods for mod creators and users alike.
+    modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
+        transitive false
+    }
+    modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
+        transitive false
+    }
+    modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
+        transitive false
+    }
 }
 
 processResources {

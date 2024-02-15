@@ -1,5 +1,5 @@
 /*
- * Copyright (C) $YEAR js6pak
+ * Copyright (C) 2022 js6pak
  *
  * This file is part of MojangFixStationAPI.
  *
@@ -13,3 +13,15 @@
  * You should have received a copy of the GNU Lesser General Public License along with MojangFixStationAPI. If not, see <https://www.gnu.org/licenses/>.
  */
 
+package pl.telvarost.mojangfixstationapi.mixinterface;
+
+import com.github.steveice10.mc.auth.data.GameProfile;
+import com.github.steveice10.mc.auth.service.SessionService;
+
+public interface SessionAccessor {
+    GameProfile getGameProfile();
+
+    String getAccessToken();
+
+    SessionService SESSION_SERVICE = new SessionService();
+}

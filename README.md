@@ -1,5 +1,5 @@
-# MojangFix
-Minecraft b1.7.3 mod that fixes skins, authentication and more
+# MojangFixStationAPI
+A StationAPI version of MojangFixStationAPI for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
 
 ## Features
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>

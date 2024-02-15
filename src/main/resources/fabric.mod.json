@@ -1,28 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "mojangfix",
+  "id": "mojangfixstationapi",
   "version": "${version}",
-  "name": "MojangFix",
-  "description": "Fixes skins, authentication and more",
+  "name": "MojangFixStationAPI",
+  "description": "MojangFix with compatibility and customization config options. Fixes skins, authentication, and more.",
   "authors": [
+    "Telvarost",
     "js6pak"
   ],
   "contact": {
     "sources": "https://github.com/js6pak/mojangfix"
   },
   "license": "LGPL-3.0-only",
-  "icon": "assets/mojangfix/icon.png",
+  "icon": "assets/mojangfixstationapi/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "pl.js6pak.mojangfix.MojangFixMod"
+      "pl.telvarost.mojangfixstationapi.MojangFixStationApiMod"
     ],
     "client": [
-      "pl.js6pak.mojangfix.client.MojangFixClientMod"
+      "pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod"
+    ],
+    "gcapi": [
+      "pl.telvarost.mojangfixstationapi.Config"
     ]
   },
   "mixins": [
-    "mojangfix.mixins.json"
+    "mojangfixstationapi.mixins.json"
   ],
   "depends": {
     "fabricloader": "*",

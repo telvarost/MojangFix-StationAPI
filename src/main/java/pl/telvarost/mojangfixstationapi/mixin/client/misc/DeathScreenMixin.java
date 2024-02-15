@@ -1,5 +1,5 @@
 /*
- * Copyright (C) $YEAR js6pak
+ * Copyright (C) 2022 js6pak
  *
  * This file is part of MojangFixStationAPI.
  *
@@ -13,3 +13,18 @@
  * You should have received a copy of the GNU Lesser General Public License along with MojangFixStationAPI. If not, see <https://www.gnu.org/licenses/>.
  */
 
+package pl.telvarost.mojangfixstationapi.mixin.client.misc;
+
+import net.minecraft.client.gui.screen.DeathScreen;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import pl.telvarost.mojangfixstationapi.util.Formatting;
+
+@Mixin(DeathScreen.class)
+public class DeathScreenMixin {
+    @ModifyConstant(method = "render", constant = @Constant(stringValue = "Score: &e"))
+    private String getResourcesUrl(String def) {
+        return def.replace('&', Formatting.FORMATTING_CODE_PREFIX);
+    }
+}

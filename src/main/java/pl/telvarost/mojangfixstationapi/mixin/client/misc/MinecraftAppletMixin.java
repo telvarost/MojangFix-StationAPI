@@ -1,5 +1,5 @@
 /*
- * Copyright (C) $YEAR js6pak
+ * Copyright (C) 2022 js6pak
  *
  * This file is part of MojangFixStationAPI.
  *
@@ -13,3 +13,18 @@
  * You should have received a copy of the GNU Lesser General Public License along with MojangFixStationAPI. If not, see <https://www.gnu.org/licenses/>.
  */
 
+package pl.telvarost.mojangfixstationapi.mixin.client.misc;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.MinecraftApplet;
+import org.objectweb.asm.Opcodes;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Mixin(MinecraftApplet.class)
+public class MinecraftAppletMixin {
+    @Redirect(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;isApplet:Z"))
+    private void disableIsApplet(Minecraft minecraft, boolean value) {
+    }
+}
