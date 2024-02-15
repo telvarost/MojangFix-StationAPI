@@ -22,7 +22,7 @@ import net.glasslauncher.mods.api.gcapi.api.MaxLength;
 
 public class Config {
 
-    @GConfig(value = "config", visibleName = "MiscTweaks Config")
+    @GConfig(value = "config", visibleName = "MojangFixStationAPI Config")
     public static ConfigFields config = new ConfigFields();
 
     public static class ConfigFields {
