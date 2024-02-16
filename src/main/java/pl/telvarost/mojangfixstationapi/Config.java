@@ -33,6 +33,7 @@ public class Config {
         public static String RESOURCES_URL = "http://mcresources.modification-station.net/MinecraftResources/";
 
         @ConfigName("Enable Chat Changes")
+        @Comment("IMPORTANT! Restart requried")
         public static Boolean enableChatChanges = true;
 
 //        @ConfigName("Enable Inventory Changes")
@@ -42,6 +43,7 @@ public class Config {
 //        public static Boolean enableSkinChanges = true;
 
         @ConfigName("Enable Wooden Sign Changes")
+        @Comment("IMPORTANT! Restart requried")
         public static Boolean enableWoodenSignChanges = true;
     }
 }
