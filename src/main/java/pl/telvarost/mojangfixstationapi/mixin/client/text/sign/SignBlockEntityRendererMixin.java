@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.Config;
+import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixinterface.TextFieldWidgetAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.SignBlockEntityAccessor;
 
@@ -39,7 +39,7 @@ public class SignBlockEntityRendererMixin {
 
     @Redirect(method = "render(Lnet/minecraft/block/entity/SignBlockEntity;DDDF)V", at = @At(value = "FIELD", target = "Lnet/minecraft/block/entity/SignBlockEntity;texts:[Ljava/lang/String;", args = "array=get"))
     private String getSignText(String[] signText, int i) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             return ((TextFieldWidgetAccessor) ((SignBlockEntityAccessor) sign).getTextFields()[i]).getDisplayText();
         } else {
             return signText[i];

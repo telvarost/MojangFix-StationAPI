@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.Config;
+import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixinterface.SignBlockEntityAccessor;
 
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class SignEditScreenMixin {
 
     @Inject(method = "init", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
             textFields[0].setFocused(true);
         }
@@ -51,7 +51,7 @@ public class SignEditScreenMixin {
 
     @Inject(method = "keyPressed", at = @At(value = "JUMP", opcode = Opcodes.IF_ICMPNE, ordinal = 2), cancellable = true)
     private void onKeyPressed(char character, int keyCode, CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
             for (TextFieldWidget textField : textFields) {
                 textField.setFocused(false);
@@ -65,7 +65,7 @@ public class SignEditScreenMixin {
 
     @Inject(method = "removed", at = @At("RETURN"))
     private void onRemoved(CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
             for (TextFieldWidget textField : textFields) {
                 textField.setFocused(false);
@@ -75,7 +75,7 @@ public class SignEditScreenMixin {
 
     @Redirect(method = "removed", at = @At(value = "FIELD", target = "Lnet/minecraft/block/entity/SignBlockEntity;texts:[Ljava/lang/String;"))
     private String[] getSignText(SignBlockEntity sign) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             return Arrays.stream(((SignBlockEntityAccessor) sign).getTextFields()).map(TextFieldWidget::getText).toArray(String[]::new);
         } else {
             return sign.texts;
@@ -84,7 +84,7 @@ public class SignEditScreenMixin {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void onTick(CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             ((SignBlockEntityAccessor) this.sign).getTextFields()[this.currentRow].tick();
             ticksSinceOpened = 6;
             ci.cancel();

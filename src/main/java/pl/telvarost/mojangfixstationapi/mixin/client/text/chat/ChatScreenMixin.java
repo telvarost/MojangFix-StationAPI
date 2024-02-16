@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import pl.telvarost.mojangfixstationapi.Config;
+import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixinterface.ChatScreenAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.TextFieldWidgetAccessor;
 
@@ -45,7 +45,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "init", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             textField = new TextFieldWidget(this, textRenderer, 2, height - 14, width - 2, height - 2, initialMessage);
             textField.setFocused(true);
             textField.setMaxLength(100);
@@ -54,7 +54,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void onTick(CallbackInfo ci) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             textField.tick();
             ci.cancel();
         }
@@ -62,7 +62,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ChatScreen;drawStringWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"))
     private void redirectDrawString(ChatScreen chatScreen, TextRenderer textRenderer, String text, int x, int y, int color) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             drawStringWithShadow(textRenderer, "> " + ((TextFieldWidgetAccessor) textField).getDisplayText(), x, y, color);
         } else {
             chatScreen.drawStringWithShadow(textRenderer, text, x, y, color);
@@ -71,7 +71,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Redirect(method = "*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screen/ChatScreen;text:Ljava/lang/String;", opcode = Opcodes.GETFIELD))
     private String getMessage(ChatScreen chatScreen) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             return textField.getText();
         } else {
             return this.text;
@@ -80,7 +80,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "keyPressed", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/ClientPlayerEntity;sendChatMessage(Ljava/lang/String;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void onSendChatMessage(char character, int keyCode, CallbackInfo ci, String var3, String message) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             int size = CHAT_HISTORY.size();
             if (size > 0 && CHAT_HISTORY.get(size - 1).equals(message)) {
                 return;
@@ -96,7 +96,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "keyPressed", at = @At(value = "JUMP", opcode = Opcodes.IF_ICMPNE, ordinal = 2), cancellable = true)
     private void onKeyPressedEntry(char character, int keyCode, CallbackInfo ci) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             if (keyCode == Keyboard.KEY_UP && chatHistoryPosition > -CHAT_HISTORY.size()) {
                 --chatHistoryPosition;
                 setTextFromHistory();
@@ -111,7 +111,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "keyPressed", at = @At("TAIL"))
     private void onKeyPressedTail(char character, int keyCode, CallbackInfo ci) {
-        if (Config.ConfigFields.enableChatChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableChatChanges) {
             textField.keyPressed(character, keyCode);
         }
     }

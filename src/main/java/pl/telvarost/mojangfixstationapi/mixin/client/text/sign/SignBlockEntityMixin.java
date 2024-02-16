@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.Config;
+import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixin.client.MinecraftAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.SignBlockEntityAccessor;
 
@@ -41,7 +41,7 @@ public class SignBlockEntityMixin extends BlockEntity implements SignBlockEntity
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             for (int i = 0; i < texts.length; i++) {
                 TextFieldWidget textField = textFields[i] = new TextFieldWidget(null, MinecraftAccessor.getInstance().textRenderer, -1, -1, -1, -1, texts[i]);
                 textField.setMaxLength(15);
@@ -51,7 +51,7 @@ public class SignBlockEntityMixin extends BlockEntity implements SignBlockEntity
 
     @Inject(method = "readNbt", at = @At("RETURN"))
     private void onReadNbt(CallbackInfo ci) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             for (int i = 0; i < texts.length; i++) {
                 textFields[i].setText(texts[i]);
             }
@@ -60,7 +60,7 @@ public class SignBlockEntityMixin extends BlockEntity implements SignBlockEntity
 
     @Redirect(method = "writeNbt", at = @At(value = "FIELD", target = "Lnet/minecraft/block/entity/SignBlockEntity;texts:[Ljava/lang/String;", args = "array=get"))
     private String getSignText(String[] signText, int i) {
-        if (Config.ConfigFields.enableWoodenSignChanges) {
+        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
             return textFields[i].getText();
         } else {
             return signText[i];
