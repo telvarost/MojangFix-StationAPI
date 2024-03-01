@@ -1,3 +1,3 @@
-- Add config options for resource URL, chat changes, and wooden sign changes
+- Add config options for MojangFix
 - Fix skin flipping on slim models
 - Fix loading/saving sign data in singleplayer
