@@ -26,7 +26,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixin.client.MinecraftAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.SignBlockEntityAccessor;
 
