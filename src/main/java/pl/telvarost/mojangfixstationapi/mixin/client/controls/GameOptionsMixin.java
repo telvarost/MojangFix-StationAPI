@@ -15,31 +15,22 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.controls;
 
-import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
-import pl.telvarost.mojangfixstationapi.mixinterface.GameSettingsAccessor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Mixin(GameOptions.class)
-public class GameOptionsMixin implements GameSettingsAccessor {
+public class GameOptionsMixin {
     @Shadow
     public KeyBinding[] allKeys;
-
-    @Unique
-    @Getter
-    @Setter
-    private boolean showDebugInfoGraph;
 
     @Inject(method = {"<init>()V", "<init>(Lnet/minecraft/client/Minecraft;Ljava/io/File;)V"}, at = @At("RETURN"))
     public void onInit(CallbackInfo ci) {

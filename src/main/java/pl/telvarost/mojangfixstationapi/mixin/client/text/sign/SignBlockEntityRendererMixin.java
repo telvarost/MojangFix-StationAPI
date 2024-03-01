@@ -39,10 +39,6 @@ public class SignBlockEntityRendererMixin {
 
     @Redirect(method = "render(Lnet/minecraft/block/entity/SignBlockEntity;DDDF)V", at = @At(value = "FIELD", target = "Lnet/minecraft/block/entity/SignBlockEntity;texts:[Ljava/lang/String;", args = "array=get"))
     private String getSignText(String[] signText, int i) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            return ((TextFieldWidgetAccessor) ((SignBlockEntityAccessor) sign).getTextFields()[i]).getDisplayText();
-        } else {
-            return signText[i];
-        }
+        return ((TextFieldWidgetAccessor) ((SignBlockEntityAccessor) sign).getTextFields()[i]).getDisplayText();
     }
 }

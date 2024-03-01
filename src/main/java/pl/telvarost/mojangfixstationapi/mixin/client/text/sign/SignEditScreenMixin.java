@@ -43,51 +43,39 @@ public class SignEditScreenMixin {
 
     @Inject(method = "init", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
-            textFields[0].setFocused(true);
-        }
+        TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
+        textFields[0].setFocused(true);
     }
 
     @Inject(method = "keyPressed", at = @At(value = "JUMP", opcode = Opcodes.IF_ICMPNE, ordinal = 2), cancellable = true)
     private void onKeyPressed(char character, int keyCode, CallbackInfo ci) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
-            for (TextFieldWidget textField : textFields) {
-                textField.setFocused(false);
-            }
-            textFields[this.currentRow].setFocused(true);
-            textFields[this.currentRow].keyPressed(character, keyCode);
-            this.sign.texts[this.currentRow] = textFields[this.currentRow].getText();
-            ci.cancel();
+        TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
+        for (TextFieldWidget textField : textFields) {
+            textField.setFocused(false);
         }
+        textFields[this.currentRow].setFocused(true);
+        textFields[this.currentRow].keyPressed(character, keyCode);
+        this.sign.texts[this.currentRow] = textFields[this.currentRow].getText();
+        ci.cancel();
     }
 
     @Inject(method = "removed", at = @At("RETURN"))
     private void onRemoved(CallbackInfo ci) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
-            for (TextFieldWidget textField : textFields) {
-                textField.setFocused(false);
-            }
+        TextFieldWidget[] textFields = ((SignBlockEntityAccessor) this.sign).getTextFields();
+        for (TextFieldWidget textField : textFields) {
+            textField.setFocused(false);
         }
     }
 
     @Redirect(method = "removed", at = @At(value = "FIELD", target = "Lnet/minecraft/block/entity/SignBlockEntity;texts:[Ljava/lang/String;"))
     private String[] getSignText(SignBlockEntity sign) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            return Arrays.stream(((SignBlockEntityAccessor) sign).getTextFields()).map(TextFieldWidget::getText).toArray(String[]::new);
-        } else {
-            return sign.texts;
-        }
+        return Arrays.stream(((SignBlockEntityAccessor) sign).getTextFields()).map(TextFieldWidget::getText).toArray(String[]::new);
     }
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void onTick(CallbackInfo ci) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            ((SignBlockEntityAccessor) this.sign).getTextFields()[this.currentRow].tick();
-            ticksSinceOpened = 6;
-            ci.cancel();
-        }
+        ((SignBlockEntityAccessor) this.sign).getTextFields()[this.currentRow].tick();
+        ticksSinceOpened = 6;
+        ci.cancel();
     }
 }

@@ -27,23 +27,65 @@ public class Config {
 
     public static class ConfigFields {
 
-        @ConfigName("Minecraft Resources URL")
-        @MaxLength(4096)
+        @ConfigName("Enable Authentication Changes")
         @Comment("Restart required for changes to take effect")
-        public static String RESOURCES_URL = "http://mcresources.modification-station.net/MinecraftResources/";
+        public static Boolean enableAuthenticationChanges = true;
+
+        @ConfigName("Enable Bit Depth Fix")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableBitDepthFix = true;
+
+        @ConfigName("Enable Controls Changes")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableControlsChanges = true;
 
         @ConfigName("Enable Chat Changes")
-        @Comment("IMPORTANT! Restart required")
+        @Comment("Restart required for changes to take effect")
         public static Boolean enableChatChanges = true;
 
-//        @ConfigName("Enable Inventory Changes")
-//        public static Boolean enableInventoryChanges = true;
+        @ConfigName("Enable Death Screen Score Fix")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableDeathScreenScoreFix = true;
 
-//        @ConfigName("Enable Skin Changes")
-//        public static Boolean enableSkinChanges = true;
+        @ConfigName("Enable Debug Graph Changes")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableDebugGraphChanges = true;
+
+        @ConfigName("Enable Debug Menu World Seed")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableDebugMenuWorldSeed = true;
+
+        @ConfigName("Enable Inventory Changes")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableInventoryChanges = true;
+
+        @ConfigName("Enable MojangFix Text On Title Screen")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableMojangFixTextOnTitleScreen = true;
+
+        @ConfigName("Enable Multiplayer Server Changes")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableMultiplayerServerChanges = true;
+
+        @ConfigName("Enable Skin Changes")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableSkinChanges = true;
 
         @ConfigName("Enable Wooden Sign Changes")
-        @Comment("IMPORTANT! Restart required")
+        @Comment("Restart required for changes to take effect")
         public static Boolean enableWoodenSignChanges = true;
+
+        @ConfigName("Enable Quit Button")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean enableQuitButton = true;
+
+        @ConfigName("Minecraft Resources Download URL")
+        @MaxLength(4096)
+        @Comment("Restart required for changes to take effect")
+        public static String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
+
+        @ConfigName("Use Resources Download URL")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean useResourcesDownloadURL = true;
     }
 }

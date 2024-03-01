@@ -21,6 +21,13 @@
     "client": [
       "pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod"
     ],
+    "stationapi:event_bus": [
+    ],
+    "stationapi:event_bus_client": [
+      "pl.telvarost.mojangfixstationapi.KeyBindingListener"
+    ],
+    "stationapi:event_bus_server": [
+    ],
     "gcapi": [
       "pl.telvarost.mojangfixstationapi.Config"
     ]

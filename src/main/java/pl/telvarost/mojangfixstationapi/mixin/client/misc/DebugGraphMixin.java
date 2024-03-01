@@ -16,37 +16,29 @@
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.option.GameOptions;
 import org.lwjgl.input.Keyboard;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.telvarost.mojangfixstationapi.KeyBindingListener;
 import pl.telvarost.mojangfixstationapi.ModHelper;
-import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
-import pl.telvarost.mojangfixstationapi.mixinterface.ChatScreenAccessor;
 
 @Mixin(Minecraft.class)
-public abstract class MinecraftMixin {
-
-    @Shadow
-    public abstract void setScreen(Screen screen);
-
-    @Shadow
-    public abstract boolean isWorldRemote();
+public abstract class DebugGraphMixin {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if (this.isWorldRemote() && Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
-            this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage("/"));
+        if (Keyboard.getEventKey() == KeyBindingListener.toggleDebugScreenPerformanceGraph.code) {
+            ModHelper.ModHelperFields.isDebugGraphOn = !ModHelper.ModHelperFields.isDebugGraphOn;
         }
     }
 
-    @Inject(method = "startSessionCheck", at = @At("HEAD"), cancellable = true)
-    private void disableSessionCheck(CallbackInfo ci) {
-        ci.cancel();
+    @Redirect(method = "run", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;debugHud:Z", opcode = Opcodes.GETFIELD))
+    private boolean getShowDebugInfo(GameOptions gameSettings) {
+        return gameSettings.debugHud && ModHelper.ModHelperFields.isDebugGraphOn;
     }
 }

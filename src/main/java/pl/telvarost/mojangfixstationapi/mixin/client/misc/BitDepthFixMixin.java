@@ -15,17 +15,21 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
-import net.minecraft.client.resource.ResourceDownloadThread;
+import net.minecraft.client.Minecraft;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.PixelFormat;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import pl.telvarost.mojangfixstationapi.Config;
-import pl.telvarost.mojangfixstationapi.client.skinfix.SkinService;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(ResourceDownloadThread.class)
-public class ResourceDownloadThreadMixin {
-    @ModifyConstant(method = "run", constant = @Constant(stringValue = "http://s3.amazonaws.com/MinecraftResources/"), remap = false)
-    private String getResourcesUrl(String def) {
-        return Config.ConfigFields.RESOURCES_DOWNLOAD_URL;
+@Mixin(Minecraft.class)
+public abstract class BitDepthFixMixin {
+
+    @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;create()V", ordinal = 0, remap = false))
+    private void onDisplayCreate() throws LWJGLException {
+        PixelFormat pixelformat = new PixelFormat();
+        pixelformat = pixelformat.withDepthBits(24);
+        Display.create(pixelformat);
     }
 }

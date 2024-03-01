@@ -32,11 +32,9 @@ import pl.telvarost.mojangfixstationapi.mixinterface.SignBlockEntityAccessor;
 public class ClientNetworkHandlerMixin {
     @Inject(method = "handleUpdateSign", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/entity/SignBlockEntity;markDirty()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void onHandleSignUpdate(UpdateSignPacket packet, CallbackInfo ci, BlockEntity blockEntity, SignBlockEntity sign, int var4) {
-        if (ModHelper.ModHelperFields.delayedEnableWoodenSignChanges) {
-            TextFieldWidget[] textFields = ((SignBlockEntityAccessor) sign).getTextFields();
-            for (int i = 0; i < packet.text.length; i++) {
-                textFields[i].setText(packet.text[i]);
-            }
+        TextFieldWidget[] textFields = ((SignBlockEntityAccessor) sign).getTextFields();
+        for (int i = 0; i < packet.text.length; i++) {
+            textFields[i].setText(packet.text[i]);
         }
     }
 }

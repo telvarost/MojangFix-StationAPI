@@ -18,6 +18,7 @@
     "client.inventory.ContainerScreenMixin",
     "client.inventory.PlayerEntityMixin",
     "client.misc.DeathScreenMixin",
+    "client.misc.DebugGraphMixin",
     "client.misc.InGameHudMixin",
     "client.misc.MinecraftAppletMixin",
     "client.misc.MinecraftMixin",
