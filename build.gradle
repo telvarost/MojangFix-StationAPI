@@ -114,7 +114,7 @@ spotless {
 
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
-    projectId = "8sdj2JBj"
+    projectId = "cTg2WC1D"
     uploadFile = remapJar
     gameVersions = [project.minecraft_version]
     loaders = ["fabric"]
