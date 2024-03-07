@@ -71,6 +71,10 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public static Boolean enableSkinChanges = true;
 
+        @ConfigName("Prioritize Mojang as Skin Provider")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean prioMojangProvider = true;
+
         @ConfigName("Enable Wooden Sign Changes")
         @Comment("Restart required for changes to take effect")
         public static Boolean enableWoodenSignChanges = true;
