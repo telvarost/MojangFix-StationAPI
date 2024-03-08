@@ -71,10 +71,6 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public static Boolean enableSkinChanges = true;
 
-        @ConfigName("Prioritize Mojang as Skin Provider")
-        @Comment("Restart required for changes to take effect")
-        public static Boolean prioMojangProvider = true;
-
         @ConfigName("Enable Wooden Sign Changes")
         @Comment("Restart required for changes to take effect")
         public static Boolean enableWoodenSignChanges = true;
@@ -87,6 +83,10 @@ public class Config {
         @MaxLength(4096)
         @Comment("Restart required for changes to take effect")
         public static String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
+
+        @ConfigName("Prioritize Mojang As Skin Provider")
+        @Comment("Restart required for changes to take effect")
+        public static Boolean prioritizeMojangProvider = false;
 
         @ConfigName("Use Resources Download URL")
         @Comment("Restart required for changes to take effect")

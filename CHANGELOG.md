@@ -1,1 +1,1 @@
-- Add config options for MojangFix
+- Add config option for prioritizing Mojang as skin provider
