@@ -24,6 +24,7 @@ import pl.telvarost.mojangfixstationapi.client.skinfix.provider.MojangProfilePro
 import pl.telvarost.mojangfixstationapi.client.skinfix.provider.ProfileProvider;
 import pl.telvarost.mojangfixstationapi.mixin.client.MinecraftAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.PlayerEntityAccessor;
+import pl.telvarost.mojangfixstationapi.Config;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -45,7 +46,7 @@ public class SkinService {
     private final ConcurrentMap<String, ReentrantLock> locks = new ConcurrentHashMap<>();
     private final Map<String, PlayerProfile> profiles = new HashMap<>();
 
-    private final List<ProfileProvider> providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());
+    private List<ProfileProvider> providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());
 
     private static GameProfile.TextureModel getTextureModelForUUID(UUID uuid) {
         return (uuid.hashCode() & 1) != 0 ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
@@ -102,6 +103,12 @@ public class SkinService {
         lock.lock();
         try {
             if (profiles.containsKey(name)) return;
+
+            if (Config.ConfigFields.prioMojangProvider){
+                providers = Arrays.asList(new MojangProfileProvider(), new AshconProfileProvider());
+            } else {
+                providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());
+            }
 
             for (ProfileProvider provider : providers) {
                 GameProfile profile;
