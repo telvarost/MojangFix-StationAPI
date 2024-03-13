@@ -1,5 +1,5 @@
 # MojangFixStationAPI
-A StationAPI version of MojangFix for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
+A Babric+GCAPI version of MojangFix for Minecraft b1.7.3 using configs to increase the mod's compatibility. Fixes skins, authentication, and more.
 
 ## Features
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>
@@ -40,8 +40,7 @@ Allows the server to verify that the connecting player is logged in
 - Enable Bit Depth Fix
 - Enable Death Screen Score Fix
 - Enable Debug Graph Hidden By Default
-  - A keybind has been added in this version of MojangFix to toggle it back on
-  - Old MojangFix utilized LCtrl + F3 to show graph, this edition uses default "P" to toggle graph on/off
+  - Old MojangFix utilizes LCtrl + F3 to show graph, this edition uses default "P" to toggle graph on/off
 - Enable Displaying World Seed In Debug Menu
 - Enable MojangFix Version Text On Title Screen
 - Enable Quit Button

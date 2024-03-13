@@ -1,1 +1,1 @@
-- Add config option for prioritizing Mojang as skin provider
+- Remove StationAPI dependency and ability to change URL

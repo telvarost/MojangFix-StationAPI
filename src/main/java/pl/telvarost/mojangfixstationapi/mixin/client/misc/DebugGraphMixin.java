@@ -24,7 +24,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.KeyBindingListener;
 import pl.telvarost.mojangfixstationapi.ModHelper;
 
 @Mixin(Minecraft.class)
@@ -32,7 +31,7 @@ public abstract class DebugGraphMixin {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if (Keyboard.getEventKey() == KeyBindingListener.toggleDebugScreenPerformanceGraph.code) {
+        if (Keyboard.getEventKey() == Keyboard.KEY_P) {
             ModHelper.ModHelperFields.isDebugGraphOn = !ModHelper.ModHelperFields.isDebugGraphOn;
         }
     }

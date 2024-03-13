@@ -19,8 +19,6 @@ import blue.endless.jankson.Jankson;
 import blue.endless.jankson.JsonObject;
 import blue.endless.jankson.api.SyntaxError;
 import net.fabricmc.loader.api.FabricLoader;
-import net.glasslauncher.mods.api.gcapi.api.GCAPI;
-import net.modificationstation.stationapi.api.util.Identifier;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;

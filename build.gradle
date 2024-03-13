@@ -78,19 +78,6 @@ dependencies {
     annotationProcessor lombok
 
     include(implementation("com.github.GeyserMC:MCAuthLib:d9d773e5d50327c33898c65cd545a4f6ef3ba1b5"))
-
-    modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
-
-    // Optional, but convenient mods for mod creators and users alike.
-    modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
-        transitive false
-    }
-    modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
-        transitive false
-    }
-    modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
-        transitive false
-    }
 }
 
 processResources {

@@ -27,9 +27,6 @@
       "pl.telvarost.mojangfixstationapi.KeyBindingListener"
     ],
     "stationapi:event_bus_server": [
-    ],
-    "gcapi": [
-      "pl.telvarost.mojangfixstationapi.Config"
     ]
   },
   "mixins": [
