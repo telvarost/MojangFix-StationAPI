@@ -26,6 +26,6 @@ import pl.telvarost.mojangfixstationapi.client.skinfix.SkinService;
 public class ResourceDownloadThreadMixin {
     @ModifyConstant(method = "run", constant = @Constant(stringValue = "http://s3.amazonaws.com/MinecraftResources/"), remap = false)
     private String getResourcesUrl(String def) {
-        return Config.ConfigFields.RESOURCES_DOWNLOAD_URL;
+        return Config.config.RESOURCES_DOWNLOAD_URL;
     }
 }

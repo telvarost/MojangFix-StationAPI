@@ -45,21 +45,21 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
                         .build()
                         .load(new File("config/mojangfixstationapi", "config.json"));
 
-                Config.ConfigFields.enableAuthenticationChanges = configObject.getBoolean("enableAuthenticationChanges", true);
-                Config.ConfigFields.enableControlsChanges = configObject.getBoolean("enableControlsChanges", true);
-                Config.ConfigFields.enableBitDepthFix = configObject.getBoolean("enableBitDepthFix", true);
-                Config.ConfigFields.enableDeathScreenScoreFix = configObject.getBoolean("enableDeathScreenScoreFix", true);
-                Config.ConfigFields.enableDebugGraphChanges = configObject.getBoolean("enableDebugGraphChanges", true);
-                Config.ConfigFields.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
-                Config.ConfigFields.enableQuitButton = configObject.getBoolean("enableQuitButton", true);
-                Config.ConfigFields.useResourcesDownloadURL = configObject.getBoolean("useResourcesDownloadURL", true);
-                Config.ConfigFields.prioritizeMojangProvider = configObject.getBoolean("prioritizeMojangProvider", false);
-                Config.ConfigFields.enableMojangFixTextOnTitleScreen = configObject.getBoolean("enableMojangFixTextOnTitleScreen", true);
-                Config.ConfigFields.enableInventoryChanges = configObject.getBoolean("enableInventoryChanges", true);
-                Config.ConfigFields.enableMultiplayerServerChanges = configObject.getBoolean("enableMultiplayerServerChanges", true);
-                Config.ConfigFields.enableSkinChanges = configObject.getBoolean("enableSkinChanges", true);
-                Config.ConfigFields.enableChatChanges = configObject.getBoolean("enableChatChanges", true);
-                Config.ConfigFields.enableWoodenSignChanges = configObject.getBoolean("enableWoodenSignChanges", true);
+                Config.config.enableAuthenticationChanges = configObject.getBoolean("enableAuthenticationChanges", true);
+                Config.config.enableControlsChanges = configObject.getBoolean("enableControlsChanges", true);
+                Config.config.enableBitDepthFix = configObject.getBoolean("enableBitDepthFix", true);
+                Config.config.enableDeathScreenScoreFix = configObject.getBoolean("enableDeathScreenScoreFix", true);
+                Config.config.enableDebugGraphChanges = configObject.getBoolean("enableDebugGraphChanges", true);
+                Config.config.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
+                Config.config.enableQuitButton = configObject.getBoolean("enableQuitButton", true);
+                Config.config.useResourcesDownloadURL = configObject.getBoolean("useResourcesDownloadURL", true);
+                Config.config.prioritizeMojangProvider = configObject.getBoolean("prioritizeMojangProvider", false);
+                Config.config.enableMojangFixTextOnTitleScreen = configObject.getBoolean("enableMojangFixTextOnTitleScreen", true);
+                Config.config.enableInventoryChanges = configObject.getBoolean("enableInventoryChanges", true);
+                Config.config.enableMultiplayerServerChanges = configObject.getBoolean("enableMultiplayerServerChanges", true);
+                Config.config.enableSkinChanges = configObject.getBoolean("enableSkinChanges", true);
+                Config.config.enableChatChanges = configObject.getBoolean("enableChatChanges", true);
+                Config.config.enableWoodenSignChanges = configObject.getBoolean("enableWoodenSignChanges", true);
             } catch (IOException ex) {
                 System.out.println("Couldn't read the config file" + ex.toString());
             } catch (SyntaxError error) {
@@ -69,77 +69,77 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
         }
 
         if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.auth.ClientNetworkHandlerMixin")) {
-            return Config.ConfigFields.enableAuthenticationChanges;
+            return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.auth.SessionMixin")) {
-            return Config.ConfigFields.enableAuthenticationChanges;
+            return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.server.auth.ServerNetworkHandlerMixin")) {
-            return Config.ConfigFields.enableAuthenticationChanges;
+            return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.controls.ControlsOptionsScreenMixin")) {
-            return Config.ConfigFields.enableControlsChanges;
+            return Config.config.enableControlsChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.controls.GameOptionsMixin")) {
-            return Config.ConfigFields.enableControlsChanges;
+            return Config.config.enableControlsChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.controls.KeyBindingMixin")) {
-            return Config.ConfigFields.enableControlsChanges;
+            return Config.config.enableControlsChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.inventory.ContainerScreenMixin")) {
             boolean isInventoryTweaksLoaded = FabricLoader.getInstance().isModLoaded("inventorytweaks");
-            return (Config.ConfigFields.enableInventoryChanges && !isInventoryTweaksLoaded);
+            return (Config.config.enableInventoryChanges && !isInventoryTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.inventory.PlayerEntityMixin")) {
             boolean isInventoryTweaksLoaded = FabricLoader.getInstance().isModLoaded("inventorytweaks");
-            return (Config.ConfigFields.enableInventoryChanges && !isInventoryTweaksLoaded);
+            return (Config.config.enableInventoryChanges && !isInventoryTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.BitDepthFixMixin")) {
-            return Config.ConfigFields.enableBitDepthFix;
+            return Config.config.enableBitDepthFix;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DeathScreenMixin")) {
-            return Config.ConfigFields.enableDeathScreenScoreFix;
+            return Config.config.enableDeathScreenScoreFix;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DebugGraphMixin")) {
-            return Config.ConfigFields.enableDebugGraphChanges;
+            return Config.config.enableDebugGraphChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.InGameHudMixin")) {
-            return Config.ConfigFields.enableDebugMenuWorldSeed;
+            return Config.config.enableDebugMenuWorldSeed;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.MinecraftAppletMixin")) {
-            return Config.ConfigFields.enableQuitButton;
+            return Config.config.enableQuitButton;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.MinecraftMixin")) {
-            return Config.ConfigFields.enableAuthenticationChanges;
+            return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ResourceDownloadThreadMixin")) {
-            return Config.ConfigFields.useResourcesDownloadURL;
+            return Config.config.useResourcesDownloadURL;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ScreenMixin")) {
-            return (Config.ConfigFields.enableControlsChanges || Config.ConfigFields.enableMultiplayerServerChanges);
+            return (Config.config.enableControlsChanges || Config.config.enableMultiplayerServerChanges);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.TitleScreenMixin")) {
-            return Config.ConfigFields.enableMojangFixTextOnTitleScreen;
+            return Config.config.enableMojangFixTextOnTitleScreen;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.ReturnToMainMenuMixin")) {
-            return Config.ConfigFields.enableMultiplayerServerChanges;
+            return Config.config.enableMultiplayerServerChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.TitleScreenMixin")) {
-            return Config.ConfigFields.enableMultiplayerServerChanges;
+            return Config.config.enableMultiplayerServerChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.BipedEntityModelMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.ClientPlayerEntityMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.EntityRenderDispatcherMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.ModelPartMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.OtherPlayerEntityMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.PlayerEntityMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.PlayerEntityRendererMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.SkinImageProcessorMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.WorldRendererMixin")) {
-            return Config.ConfigFields.enableSkinChanges;
+            return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.TextFieldWidgetMixin")) {
-            return (Config.ConfigFields.enableMultiplayerServerChanges || Config.ConfigFields.enableChatChanges || Config.ConfigFields.enableWoodenSignChanges);
+            return (Config.config.enableMultiplayerServerChanges || Config.config.enableChatChanges || Config.config.enableWoodenSignChanges);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.chat.ChatScreenMixin")) {
-            return Config.ConfigFields.enableChatChanges;
+            return Config.config.enableChatChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.chat.SleepingChatScreenMixin")) {
-            return Config.ConfigFields.enableChatChanges;
+            return Config.config.enableChatChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.sign.ClientNetworkHandlerMixin")) {
-            return Config.ConfigFields.enableWoodenSignChanges;
+            return Config.config.enableWoodenSignChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.sign.SignBlockEntityMixin")) {
-            return Config.ConfigFields.enableWoodenSignChanges;
+            return Config.config.enableWoodenSignChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.sign.SignBlockEntityRendererMixin")) {
-            return Config.ConfigFields.enableWoodenSignChanges;
+            return Config.config.enableWoodenSignChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.sign.SignEditScreenMixin")) {
-            return Config.ConfigFields.enableWoodenSignChanges;
+            return Config.config.enableWoodenSignChanges;
         } else {
             return true;
         }

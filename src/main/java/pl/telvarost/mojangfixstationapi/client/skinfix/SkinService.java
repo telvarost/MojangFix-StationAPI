@@ -104,7 +104,7 @@ public class SkinService {
         try {
             if (profiles.containsKey(name)) return;
 
-            if (Config.ConfigFields.prioritizeMojangProvider){
+            if (Config.config.prioritizeMojangProvider){
                 providers = Arrays.asList(new MojangProfileProvider(), new AshconProfileProvider());
             } else {
                 providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());

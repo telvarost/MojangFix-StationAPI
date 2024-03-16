@@ -25,7 +25,7 @@ public class KeyBindingListener {
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
-        if (Config.ConfigFields.enableDebugGraphChanges) {
+        if (Config.config.enableDebugGraphChanges) {
             event.keyBindings.add(toggleDebugScreenPerformanceGraph = new KeyBinding("Toggle Debug Graph", Keyboard.KEY_P));
         }
     }
