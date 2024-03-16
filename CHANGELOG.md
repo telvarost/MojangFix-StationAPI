@@ -1,1 +1,1 @@
-- Add config option for prioritizing Mojang as skin provider
+- Disabled backface culling during first person hand rendering and fixed semi-translucent outer layers rendering opaque
