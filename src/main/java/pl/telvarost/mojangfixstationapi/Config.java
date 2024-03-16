@@ -29,67 +29,67 @@ public class Config {
 
         @ConfigName("Enable Authentication Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableAuthenticationChanges = true;
+        public Boolean enableAuthenticationChanges = true;
 
         @ConfigName("Enable Bit Depth Fix")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableBitDepthFix = true;
+        public Boolean enableBitDepthFix = true;
 
         @ConfigName("Enable Controls Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableControlsChanges = true;
+        public Boolean enableControlsChanges = true;
 
         @ConfigName("Enable Chat Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableChatChanges = true;
+        public Boolean enableChatChanges = true;
 
         @ConfigName("Enable Death Screen Score Fix")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableDeathScreenScoreFix = true;
+        public Boolean enableDeathScreenScoreFix = true;
 
         @ConfigName("Enable Debug Graph Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableDebugGraphChanges = true;
+        public Boolean enableDebugGraphChanges = true;
 
         @ConfigName("Enable Debug Menu World Seed")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableDebugMenuWorldSeed = true;
+        public Boolean enableDebugMenuWorldSeed = true;
 
         @ConfigName("Enable Inventory Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableInventoryChanges = true;
+        public Boolean enableInventoryChanges = true;
 
         @ConfigName("Enable MojangFix Text On Title Screen")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableMojangFixTextOnTitleScreen = true;
+        public Boolean enableMojangFixTextOnTitleScreen = true;
 
         @ConfigName("Enable Multiplayer Server Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableMultiplayerServerChanges = true;
+        public Boolean enableMultiplayerServerChanges = true;
 
         @ConfigName("Enable Skin Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableSkinChanges = true;
+        public Boolean enableSkinChanges = true;
 
         @ConfigName("Enable Wooden Sign Changes")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableWoodenSignChanges = true;
+        public Boolean enableWoodenSignChanges = true;
 
         @ConfigName("Enable Quit Button")
         @Comment("Restart required for changes to take effect")
-        public static Boolean enableQuitButton = true;
+        public Boolean enableQuitButton = true;
 
         @ConfigName("Minecraft Resources Download URL")
         @MaxLength(4096)
         @Comment("Restart required for changes to take effect")
-        public static String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
+        public String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
 
         @ConfigName("Prioritize Mojang As Skin Provider")
         @Comment("Restart required for changes to take effect")
-        public static Boolean prioritizeMojangProvider = false;
+        public Boolean prioritizeMojangProvider = false;
 
         @ConfigName("Use Resources Download URL")
         @Comment("Restart required for changes to take effect")
-        public static Boolean useResourcesDownloadURL = true;
+        public Boolean useResourcesDownloadURL = true;
     }
 }
