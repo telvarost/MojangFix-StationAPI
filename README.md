@@ -1,6 +1,6 @@
 # MojangFixStationAPI
 A StationAPI version of MojangFix for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
-* For more advanced inventory tweaks (like `left+click + drag`) consider: https://modrinth.com/mod/inventorytweaks
+* For more InventoryTweaks (ex: `left-click + drag`) consider : https://modrinth.com/mod/inventorytweaks
 
 ## Features
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>
@@ -31,7 +31,7 @@ Allows the server to verify that the connecting player is logged in
 ![text](https://user-images.githubusercontent.com/35262707/159060408-8e35a074-0ee1-426a-bc51-1152d6adca34.gif)
 </details>
 
-<details><summary>Basic Inventory tweaks</summary>
+<details><summary>Basic inventory tweaks</summary>
 
 <video controls src="https://user-images.githubusercontent.com/35262707/159063818-e450561d-f13d-435a-b46b-879cc54a8a0f.mp4" />
 </details>
