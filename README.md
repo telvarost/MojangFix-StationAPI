@@ -1,5 +1,6 @@
 # MojangFixStationAPI
 A StationAPI version of MojangFix for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
+* For more advanced inventory tweaks (like `left+click + drag`) consider: https://modrinth.com/mod/inventorytweaks
 
 ## Features
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>
@@ -30,7 +31,7 @@ Allows the server to verify that the connecting player is logged in
 ![text](https://user-images.githubusercontent.com/35262707/159060408-8e35a074-0ee1-426a-bc51-1152d6adca34.gif)
 </details>
 
-<details><summary>Inventory tweaks</summary>
+<details><summary>Basic Inventory tweaks</summary>
 
 <video controls src="https://user-images.githubusercontent.com/35262707/159063818-e450561d-f13d-435a-b46b-879cc54a8a0f.mp4" />
 </details>
@@ -53,8 +54,8 @@ Allows the server to verify that the connecting player is logged in
 
 1. Download an instance of Babric for Prism Launcher: https://github.com/babric/prism-instance
 2. Install Java 17, set the instance to use it, and disable compatibility checks on the instance: https://adoptium.net/temurin/releases/
-3. Add StationAPI to the mod folder for the instance: https://jenkins.glass-launcher.net/job/StationAPI/lastSuccessfulBuild/
-4. (Optional) Add Mod Menu to the mod folder for the instance: https://github.com/calmilamsy/ModMenu/releases
-5. (Optional) Add GlassConfigAPI 1.1.6+ to the mod folder for the instance: https://maven.glass-launcher.net/#/releases/net/glasslauncher/mods/GlassConfigAPI
+3. Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
+4. (Optional) Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
+5. (Optional) Add GlassConfigAPI 1.1.6+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
 6. Add this mod to the mod folder for the instance: https://github.com/telvarost/MojangFix-StationAPI/releases
 7. Run and enjoy! 👍
