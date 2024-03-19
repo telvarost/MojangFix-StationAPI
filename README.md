@@ -40,8 +40,8 @@ Allows the server to verify that the connecting player is logged in
 - Enable Bit Depth Fix
 - Enable Death Screen Score Fix
 - Enable Debug Graph Hidden By Default
-  - A keybind has been added in this version of MojangFix to toggle it back on
-  - Old MojangFix utilized LCtrl + F3 to show graph, this edition uses default "P" to toggle graph on/off
+  - Use the new keybind (default: LCtrl) + F3 to open up debug screen with graph
+  - Optionally using GCAPI config switch keybind to toggle debug graph whenever pressed
 - Enable Displaying World Seed In Debug Menu
 - Enable MojangFix Version Text On Title Screen
 - Enable Quit Button
