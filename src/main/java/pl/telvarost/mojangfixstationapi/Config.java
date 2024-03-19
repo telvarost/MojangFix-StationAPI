@@ -51,6 +51,10 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public Boolean enableDebugGraphChanges = true;
 
+        @ConfigName("Enable Debug Graph Toggle As KEYBIND+F3")
+        @Comment("False=Toggle debug graph with just KEYBIND")
+        public Boolean enableDebugGraphModernToggle = true;
+
         @ConfigName("Enable Debug Menu World Seed")
         @Comment("Restart required for changes to take effect")
         public Boolean enableDebugMenuWorldSeed = true;

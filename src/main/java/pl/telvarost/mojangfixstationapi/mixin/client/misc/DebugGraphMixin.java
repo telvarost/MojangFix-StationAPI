@@ -24,16 +24,26 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.Config;
 import pl.telvarost.mojangfixstationapi.KeyBindingListener;
 import pl.telvarost.mojangfixstationapi.ModHelper;
 
 @Mixin(Minecraft.class)
 public abstract class DebugGraphMixin {
 
+    @Inject(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;debugHud:Z", ordinal = 0, shift = At.Shift.BEFORE))
+    private void onF3(CallbackInfo ci) {
+        if (Config.config.enableDebugGraphModernToggle) {
+            ModHelper.ModHelperFields.isDebugGraphOn = Keyboard.isKeyDown(Keyboard.KEY_LCONTROL);
+        }
+    }
+
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if (Keyboard.getEventKey() == KeyBindingListener.toggleDebugScreenPerformanceGraph.code) {
-            ModHelper.ModHelperFields.isDebugGraphOn = !ModHelper.ModHelperFields.isDebugGraphOn;
+        if (!Config.config.enableDebugGraphModernToggle) {
+            if (Keyboard.getEventKey() == KeyBindingListener.toggleDebugScreenPerformanceGraph.code) {
+                ModHelper.ModHelperFields.isDebugGraphOn = !ModHelper.ModHelperFields.isDebugGraphOn;
+            }
         }
     }
 

@@ -1,1 +1,2 @@
-- Disabled backface culling during first person hand rendering and fixed semi-translucent outer layers rendering opaque
+- Return debug graph keybind to standard MojangFix (LCTRL+F3)
+  - You can change this in the config to use just the keybind to toggle the debug graph
