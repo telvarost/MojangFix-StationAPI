@@ -36,7 +36,7 @@ Allows the server to verify that the connecting player is logged in
 <video controls src="https://user-images.githubusercontent.com/35262707/159063818-e450561d-f13d-435a-b46b-879cc54a8a0f.mp4" />
 </details>
 
-<details><summary>Previously Unlisted Changes</summary>
+<details><summary>Previously unlisted changes</summary>
 
 - Enable Bit Depth Fix
 - Enable Death Screen Score Fix
