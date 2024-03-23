@@ -59,3 +59,13 @@ Allows the server to verify that the connecting player is logged in
 5. (Optional) Add GlassConfigAPI 1.1.6+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
 6. Add this mod to the mod folder for the instance: https://github.com/telvarost/MojangFix-StationAPI/releases
 7. Run and enjoy! 👍
+
+## FAQ
+
+* Q. Why is minecraft so small and part of my screen white?
+  * A. You probably have screen scaling on or are using a high DPI screen. There are 4 possible ways to fix this:
+    * You can pass the following string in as a java argument in the settings tab
+      * `-Dsun.java2d.uiScale=1.0`
+    * You can install ClientsideEssentials mod or UniTweaks and use their screen scaling fix from GCAPI config options (fix may produce small artifacts with this option)
+    * You can change the DPI settings for Prism Launcher to system
+    * Or, you can change your screen scaling to 100%
