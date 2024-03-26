@@ -17,14 +17,20 @@ package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MinecraftApplet;
-import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.Config;
 
 @Mixin(MinecraftApplet.class)
 public class MinecraftAppletMixin {
-    @Redirect(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;isApplet:Z"))
-    private void disableIsApplet(Minecraft minecraft, boolean value) {
+    @Shadow
+    private Minecraft field_2832;
+
+    @Inject(method = "init", at = @At(value = "TAIL"), remap = false)
+    public void setIsAppletToFalse(CallbackInfo ci) {
+        this.field_2832.isApplet = false;
     }
 }

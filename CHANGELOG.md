@@ -1,2 +1,1 @@
-- Return debug graph keybind to standard MojangFix (LCTRL+F3)
-  - You can change this in the config to use just the keybind to toggle the debug graph
+- Change quit button fix to be compatible with UniTweaks and Macs

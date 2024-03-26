@@ -95,7 +95,8 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.InGameHudMixin")) {
             return Config.config.enableDebugMenuWorldSeed;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.MinecraftAppletMixin")) {
-            return Config.config.enableQuitButton;
+            boolean isUniTweaksLoaded = FabricLoader.getInstance().isModLoaded("unitweaks");
+            return (Config.config.enableQuitButton && !isUniTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.MinecraftMixin")) {
             return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ResourceDownloadThreadMixin")) {
