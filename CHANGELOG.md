@@ -1,1 +1,1 @@
-- Add ability to raise slim skin shoulders
+- Fix config comment about raise slim skin shoulders
