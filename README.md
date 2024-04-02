@@ -6,6 +6,7 @@ A StationAPI version of MojangFix for Minecraft b1.7.3 with configs to increase 
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>
 
 ![mintoyatsu standing with a working skin](https://user-images.githubusercontent.com/35262707/158473931-1ae3ea4f-4673-4baa-aa3d-044275d462ea.png)
+- Added ability to raise slim skin shoulders with GlassConfigAPI
 </details>
 
 <details><summary>Authentication fix</summary>
