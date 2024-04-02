@@ -1,1 +1,1 @@
-- Change quit button fix to be compatible with UniTweaks and Macs
+- Add ability to raise slim skin shoulders

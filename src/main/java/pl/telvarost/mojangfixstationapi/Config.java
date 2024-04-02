@@ -92,6 +92,10 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public Boolean prioritizeMojangProvider = false;
 
+        @ConfigName("Raise Slim Skin Shoulders")
+        @Comment("Reload world for changes to take effect")
+        public Boolean raiseSlimSkinShoulders = false;
+
         @ConfigName("Use Resources Download URL")
         @Comment("Restart required for changes to take effect")
         public Boolean useResourcesDownloadURL = true;
