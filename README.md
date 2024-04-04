@@ -1,5 +1,5 @@
 # MojangFixStationAPI
-A StationAPI version of MojangFix for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
+A [StationAPI](https://modrinth.com/mod/stationapi) version of [MojangFix](https://modrinth.com/mod/mojangfix) for Minecraft b1.7.3 with configs to increase the mod's compatibility. Fixes skins, authentication, and more.
 * For more InventoryTweaks (ex: `left-click + drag`) consider : https://modrinth.com/mod/inventorytweaks
 
 ## Features
