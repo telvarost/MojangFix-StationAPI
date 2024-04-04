@@ -1,1 +1,1 @@
-- Fix skin rendering by @forkiesassds in https://github.com/js6pak/mojangfix/pull/16
+- Fix container offset when swapping items to hotbar slots

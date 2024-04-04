@@ -103,10 +103,12 @@ public abstract class ContainerScreenMixin extends Screen {
             this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
         }
 
-        if (keyCode >= Keyboard.KEY_1 && keyCode <= Keyboard.KEY_9) {
+        if (  (null != this.container.slots)
+           && (10 <= this.container.slots.size())
+        ) {
             if (this.minecraft.player.inventory.getCursorStack() == null)
                 this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
-            this.minecraft.interactionManager.clickSlot(this.container.syncId, 35 + keyCode - 1, 0, false, this.minecraft.player);
+            this.minecraft.interactionManager.clickSlot(this.container.syncId, (this.container.slots.size() - 10) + keyCode - 1, 0, false, this.minecraft.player);
             this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
         }
     }
