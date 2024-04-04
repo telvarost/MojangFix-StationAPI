@@ -1,1 +1,1 @@
-- Fix config comment about raise slim skin shoulders
+- Fix container offset when swapping items to hotbar slots
