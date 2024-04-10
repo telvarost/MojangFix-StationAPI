@@ -56,8 +56,8 @@ Allows the server to verify that the connecting player is logged in
 1. Download an instance of Babric for Prism Launcher: https://github.com/babric/prism-instance
 2. Install Java 17, set the instance to use it, and disable compatibility checks on the instance: https://adoptium.net/temurin/releases/
 3. Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
-4. (Optional) Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
-5. (Optional) Add GlassConfigAPI 1.1.6+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
+4. Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
+5. Add GlassConfigAPI 1.1.6+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
 6. Add this mod to the mod folder for the instance: https://github.com/telvarost/MojangFix-StationAPI/releases
 7. Run and enjoy! 👍
 
