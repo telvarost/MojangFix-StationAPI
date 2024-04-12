@@ -29,7 +29,7 @@ Allows the server to verify that the connecting player is logged in
 
 <details><summary>Better text edition</summary>
 
-![text](https://user-images.githubusercontent.com/35262707/159060408-8e35a074-0ee1-426a-bc51-1152d6adca34.gif)
+![Allow pasting text into chat and onto signs with `LCTRL+V`](https://user-images.githubusercontent.com/35262707/159060408-8e35a074-0ee1-426a-bc51-1152d6adca34.gif)
 </details>
 
 <details><summary>Basic inventory tweaks</summary>
