@@ -48,6 +48,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
         textField = new TextFieldWidget(this, textRenderer, 2, height - 14, width - 2, height - 2, initialMessage);
         textField.setFocused(true);
         textField.setMaxLength(100);
+        chatHistoryPosition = 0;
     }
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)

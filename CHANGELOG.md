@@ -1,1 +1,1 @@
-- Fix tab autocomplete when using SPC (press tab twice)
+- Fix chat offset when selecting message from chat history
