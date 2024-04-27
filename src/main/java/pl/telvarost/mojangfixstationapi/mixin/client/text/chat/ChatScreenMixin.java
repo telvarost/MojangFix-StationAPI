@@ -93,6 +93,11 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
         }
     }
 
+    @Inject(method = "keyPressed", at = @At("HEAD"))
+    private void onKeyPressedHead(char character, int keyCode, CallbackInfo ci) {
+        textField.setText(text);
+    }
+
     @Inject(method = "keyPressed", at = @At("TAIL"))
     private void onKeyPressedTail(char character, int keyCode, CallbackInfo ci) {
         textField.keyPressed(character, keyCode);

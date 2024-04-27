@@ -1,1 +1,1 @@
-- Fix container offset when swapping items to hotbar slots
+- Fix tab autocomplete when using SPC (press tab twice)

@@ -91,6 +91,9 @@ dependencies {
     modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
         transitive false
     }
+	modImplementation('com.github.matthewperiut:spc-babric:0.4.3') {
+		transitive false
+	}
 }
 
 processResources {
