@@ -78,6 +78,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     private void setTextFromHistory() {
         textField.setText(CHAT_HISTORY.get(CHAT_HISTORY.size() + chatHistoryPosition));
+        text = textField.getText();
     }
 
     @Inject(method = "keyPressed", at = @At(value = "JUMP", opcode = Opcodes.IF_ICMPNE, ordinal = 2), cancellable = true)
