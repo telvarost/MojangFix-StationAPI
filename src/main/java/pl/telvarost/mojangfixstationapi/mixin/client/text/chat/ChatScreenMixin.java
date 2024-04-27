@@ -97,6 +97,10 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "keyPressed", at = @At("HEAD"))
     private void onKeyPressedHead(char character, int keyCode, CallbackInfo ci) {
+        if (ModHelper.ModHelperFields.setClipboardText) {
+            ModHelper.ModHelperFields.setClipboardText = false;
+            text = textField.getText();
+        }
         textField.setText(text);
     }
 

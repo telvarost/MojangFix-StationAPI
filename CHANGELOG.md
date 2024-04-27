@@ -1,1 +1,1 @@
-- Fix chat offset when selecting message from chat history
+- Fix clipboard text

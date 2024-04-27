@@ -24,6 +24,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.ModHelper;
 import pl.telvarost.mojangfixstationapi.mixinterface.TextFieldWidgetAccessor;
 
 @Mixin(TextFieldWidget.class)
@@ -49,6 +50,7 @@ public class TextFieldWidgetMixin implements TextFieldWidgetAccessor {
     @Redirect(method = "keyPressed", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/widget/TextFieldWidget;text:Ljava/lang/String;", opcode = Opcodes.PUTFIELD))
     private void onClipboardPaste(TextFieldWidget guiTextField, String value) {
         this.write(value.substring(this.text.length()));
+        ModHelper.ModHelperFields.setClipboardText = true;
     }
 
     @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = Keyboard.KEY_BACK))
