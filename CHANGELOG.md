@@ -1,1 +1,1 @@
-- Fix clipboard text
+- Add ability to hide server IPs

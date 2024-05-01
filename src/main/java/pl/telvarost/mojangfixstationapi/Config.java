@@ -27,6 +27,10 @@ public class Config {
 
     public static class ConfigFields {
 
+        @ConfigName("Disable Server List IP Addresses")
+        @Comment("Hides IP addresses for the server list only")
+        public Boolean disableServerListIpAddresses = false;
+
         @ConfigName("Enable Authentication Changes")
         @Comment("Restart required for changes to take effect")
         public Boolean enableAuthenticationChanges = true;

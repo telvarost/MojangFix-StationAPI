@@ -17,6 +17,8 @@ package pl.telvarost.mojangfixstationapi.client.gui.multiplayer;
 
 import net.minecraft.client.gui.widget.EntryListWidget;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.resource.language.TranslationStorage;
+import pl.telvarost.mojangfixstationapi.Config;
 
 public class MultiplayerServerListWidget extends EntryListWidget {
     private final MultiplayerScreen parent;
@@ -55,6 +57,12 @@ public class MultiplayerServerListWidget extends EntryListWidget {
     protected void renderEntry(int index, int x, int y, int l, Tessellator arg) {
         ServerData server = this.parent.getServersList().get(index);
         this.parent.drawStringWithShadow(this.parent.getFontRenderer(), server.getName(), x + 2, y + 1, 0xffffff);
-        this.parent.drawStringWithShadow(this.parent.getFontRenderer(), server.getIp(), x + 2, y + 12, 0x808080);
+        if (Config.config.disableServerListIpAddresses) {
+            TranslationStorage translations = TranslationStorage.getInstance();
+            String hideIp = "(" + translations.get("serverList.mojangfixstationapi:hidden") + ")";
+            this.parent.drawStringWithShadow(this.parent.getFontRenderer(), hideIp, x + 2, y + 12, 0x808080);
+        } else {
+            this.parent.drawStringWithShadow(this.parent.getFontRenderer(), server.getIp(), x + 2, y + 12, 0x808080);
+        }
     }
 }
