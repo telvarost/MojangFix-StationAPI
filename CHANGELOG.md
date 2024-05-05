@@ -1,1 +1,1 @@
-- Add ability to hide server IPs
+- Update to StationAPI alpha2 and add language support
