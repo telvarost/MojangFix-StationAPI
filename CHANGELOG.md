@@ -1,1 +1,3 @@
-- Update to StationAPI alpha2 and add language support
+- Update to StationAPI alpha.2 and add language support
+- Fix bit-depth fix not working properly
+- Add support for using the command keybinding in single-player if SPC is loaded
