@@ -15,6 +15,7 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -40,7 +41,7 @@ public abstract class MinecraftMixin {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if (this.isWorldRemote() && Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
+        if ((this.isWorldRemote() || FabricLoader.getInstance().isModLoaded("spc")) && Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
             this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage("/"));
         }
     }

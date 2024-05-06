@@ -87,7 +87,8 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
             boolean isInventoryTweaksLoaded = FabricLoader.getInstance().isModLoaded("inventorytweaks");
             return (Config.config.enableInventoryChanges && !isInventoryTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.BitDepthFixMixin")) {
-            return Config.config.enableBitDepthFix;
+            boolean isUniTweaksLoaded = FabricLoader.getInstance().isModLoaded("unitweaks");
+            return (Config.config.enableBitDepthFix && !isUniTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DeathScreenMixin")) {
             return Config.config.enableDeathScreenScoreFix;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DebugGraphMixin")) {
