@@ -93,7 +93,7 @@ public class DirectConnectScreen extends Screen {
 
     public void render(int mouseX, int mouseY, float delta) {
         this.renderBackground();
-        this.drawCenteredTextWithShadow(this.textRenderer, "Direct connect", this.width / 2, this.height / 4 - 60 + 20, 16777215);
+        this.drawCenteredTextWithShadow(this.textRenderer, TranslationStorage.getInstance().get("multiplayer.mojangfixstationapi.directConnect"), this.width / 2, this.height / 4 - 60 + 20, 16777215);
         this.drawCenteredTextWithShadow(this.textRenderer, TranslationStorage.getInstance().get("multiplayer.ipinfo"), this.width / 2, this.height / 4 - 60 + 60 + 36, 10526880);
         this.addressField.render();
         super.render(mouseX, mouseY, delta);

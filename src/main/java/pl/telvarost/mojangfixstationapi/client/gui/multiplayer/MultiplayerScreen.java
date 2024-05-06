@@ -83,22 +83,22 @@ public class MultiplayerScreen extends Screen {
 
     public void initButtons() {
         TranslationStorage translationStorage = TranslationStorage.getInstance();
-        this.buttons.add(this.buttonConnect = new CallbackButtonWidget(this.width / 2 - 150 - 4, this.height - 52, 100, 20, "Connect", button -> {
+        this.buttons.add(this.buttonConnect = new CallbackButtonWidget(this.width / 2 - 150 - 4, this.height - 52, 100, 20, translationStorage.get("multiplayer.mojangfixstationapi.connect"), button -> {
             this.joinServer(this.selectedServer);
         }));
-        this.buttons.add(new CallbackButtonWidget(this.width / 2 - 50, this.height - 52, 100, 20, "Direct connect", button -> {
+        this.buttons.add(new CallbackButtonWidget(this.width / 2 - 50, this.height - 52, 100, 20, translationStorage.get("multiplayer.mojangfixstationapi.directConnect"), button -> {
             this.minecraft.setScreen(new DirectConnectScreen(this));
         }));
-        this.buttons.add(new CallbackButtonWidget(this.width / 2 + 50 + 4, this.height - 52, 100, 20, "Add server", button -> {
+        this.buttons.add(new CallbackButtonWidget(this.width / 2 + 50 + 4, this.height - 52, 100, 20, translationStorage.get("multiplayer.mojangfixstationapi.addServer"), button -> {
             this.minecraft.setScreen(new EditServerScreen(this, null));
         }));
-        this.buttons.add(this.buttonEdit = new CallbackButtonWidget(this.width / 2 - 154, this.height - 28, 70, 20, "Edit", button -> {
+        this.buttons.add(this.buttonEdit = new CallbackButtonWidget(this.width / 2 - 154, this.height - 28, 70, 20, translationStorage.get("multiplayer.mojangfixstationapi.edit"), button -> {
             this.minecraft.setScreen(new EditServerScreen(this, this.selectedServer));
         }));
         this.buttons.add(this.buttonDelete = new CallbackButtonWidget(this.width / 2 - 74, this.height - 28, 70, 20, translationStorage.get("selectWorld.delete"), button -> {
             TranslationStorage translate = TranslationStorage.getInstance();
             this.minecraft.setScreen(new CallbackConfirmScreen(this,
-                    translate.get("Are you sure you want to delete this server?"),
+                    translationStorage.get("multiplayer.mojangfixstationapi.deleteConfirm1"),
                     "'" + this.selectedServer.getName() + "' " + translate.get("selectWorld.deleteWarning"),
                     translate.get("selectWorld.deleteButton"),
                     translate.get("gui.cancel"),

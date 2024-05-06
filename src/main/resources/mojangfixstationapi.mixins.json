@@ -17,6 +17,7 @@
     "client.controls.KeyBindingMixin",
     "client.inventory.ContainerScreenMixin",
     "client.inventory.PlayerEntityMixin",
+    "client.misc.BitDepthFixMixin",
     "client.misc.DeathScreenMixin",
     "client.misc.DebugGraphMixin",
     "client.misc.InGameHudMixin",

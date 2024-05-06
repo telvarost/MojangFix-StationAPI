@@ -41,7 +41,8 @@ public class EditServerScreen extends Screen {
 
     public void init() {
         Keyboard.enableRepeatEvents(true);
-        this.buttons.add(this.button = new CallbackButtonWidget(this.width / 2 - 100, this.height / 4 + 96 + 12, this.server == null ? "Add" : "Edit", button -> {
+        TranslationStorage translations = TranslationStorage.getInstance();
+        this.buttons.add(this.button = new CallbackButtonWidget(this.width / 2 - 100, this.height / 4 + 96 + 12, this.server == null ? translations.get("multiplayer.mojangfixstationapi.addServer") : translations.get("multiplayer.mojangfixstationapi.edit"), button -> {
             if (this.server != null) {
                 this.server.setName(this.nameTextField.getText());
                 this.server.setIp(this.ipTextField.getText());
@@ -89,9 +90,10 @@ public class EditServerScreen extends Screen {
 
     public void render(int mouseX, int mouseY, float delta) {
         this.renderBackground();
-        this.drawStringWithShadow(this.textRenderer, (this.server == null ? "Add" : "Edit") + " Server", this.width / 2, 20, 16777215);
-        this.drawStringWithShadow(this.textRenderer, "Server name", this.width / 2 - 100, 47, 10526880);
-        this.drawStringWithShadow(this.textRenderer, "Server IP", this.width / 2 - 100, 94, 10526880);
+        TranslationStorage translations = TranslationStorage.getInstance();
+        this.drawCenteredTextWithShadow(this.textRenderer, (this.server == null ? translations.get("multiplayer.mojangfixstationapi.addServer") : translations.get("multiplayer.mojangfixstationapi.editServerInfo")), this.width / 2, 20, 16777215);
+        this.drawStringWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverName"), this.width / 2 - 100, 47, 10526880);
+        this.drawStringWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverAddress"), this.width / 2 - 100, 94, 10526880);
         this.nameTextField.render();
         this.ipTextField.render();
         super.render(mouseX, mouseY, delta);
