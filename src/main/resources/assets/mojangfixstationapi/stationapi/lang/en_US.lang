@@ -9,10 +9,8 @@ multiplayer.@.directConnect=Direct Connect
 multiplayer.@.addServer=Add Server
 multiplayer.@.refresh=Refresh
 multiplayer.@.cancel=Cancel
-
 multiplayer.@.deleteConfirm1=Are you sure you want to remove this server?
 multiplayer.@.deleteConfirm2=will be lost forever! (A long time!)
-
 multiplayer.@.editServerInfo=Edit Server Info
 multiplayer.@.serverName=Server Name
 multiplayer.@.serverAddress=Server Address
