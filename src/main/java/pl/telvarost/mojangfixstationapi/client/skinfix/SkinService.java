@@ -115,7 +115,7 @@ public class SkinService {
 
                 try {
                     profile = provider.get(name).get();
-                } catch (InterruptedException | ExecutionException e) {
+                } catch (Exception e) {
                     MojangFixStationApiMod.getLogger().warn("Lookup using {} for profile {} failed!", provider.getClass().getSimpleName(), name);
                     continue;
                 }
