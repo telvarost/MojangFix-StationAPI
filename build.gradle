@@ -1,15 +1,24 @@
 plugins {
-    id 'babric-loom' version '1.4-SNAPSHOT'
-    id "maven-publish"
+    id 'fabric-loom' version '1.7.3'
+    id 'babric-loom-extension' version '1.7.4'
+    id 'maven-publish'
     id("com.modrinth.minotaur") version "2.+"
     id "com.diffplug.spotless" version "6.2.2"
 }
 
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-group = project.maven_group
 version = project.mod_version
+group = project.maven_group
+
+loom {
+    mixin {
+        useLegacyMixinAp = true
+    }
+    customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
+    intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
+}
 
 repositories {
     // Add repositories to retrieve artifacts from in here.
@@ -58,15 +67,9 @@ repositories {
     mavenCentral()
 }
 
-loom {
-    gluedMinecraftJar()
-    customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
-    intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
-}
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "babric:barn:${project.yarn_mappings}:v2"
+    mappings "net.glasslauncher:biny:${project.yarn_mappings}:v2"
     modImplementation "babric:fabric-loader:${project.loader_version}"
 
     implementation "org.slf4j:slf4j-api:1.8.0-beta4"
@@ -92,7 +95,7 @@ dependencies {
     modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
         transitive false
     }
-	modImplementation('com.github.matthewperiut:spc-babric:0.4.3') {
+	modImplementation('com.github.matthewperiut:spc-babric:0.4.5') {
 		transitive false
 	}
 }

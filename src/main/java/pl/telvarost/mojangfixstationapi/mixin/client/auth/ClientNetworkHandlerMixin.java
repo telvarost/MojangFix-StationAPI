@@ -19,7 +19,7 @@ import com.github.steveice10.mc.auth.exception.request.RequestException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.ClientNetworkHandler;
 import net.minecraft.network.Connection;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.handshake.HandshakePacket;
 import net.minecraft.network.packet.login.LoginHelloPacket;
 import org.spongepowered.asm.mixin.Mixin;
@@ -41,12 +41,12 @@ public abstract class ClientNetworkHandlerMixin {
     @Shadow
     public abstract void sendPacket(Packet arg);
 
-    @Redirect(method = "handleHandshake", at = @At(value = "INVOKE", target = "Ljava/lang/String;equals(Ljava/lang/Object;)Z"))
+    @Redirect(method = "onHandshake", at = @At(value = "INVOKE", target = "Ljava/lang/String;equals(Ljava/lang/Object;)Z"))
     private boolean checkServerId(String serverId, Object offline) {
         return serverId.trim().isEmpty() || serverId.equals(offline) || this.minecraft.session.sessionId.trim().isEmpty() || this.minecraft.session.sessionId.equals(offline);
     }
 
-    @Inject(method = "handleHandshake", at = @At(value = "NEW", target = "java/net/URL"), cancellable = true)
+    @Inject(method = "onHandshake", at = @At(value = "NEW", target = "java/net/URL"), cancellable = true)
     private void onJoinServer(HandshakePacket packet, CallbackInfo ci) {
         SessionAccessor session = (SessionAccessor) this.minecraft.session;
 

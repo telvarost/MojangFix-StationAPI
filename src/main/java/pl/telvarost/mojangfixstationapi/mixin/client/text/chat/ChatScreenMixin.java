@@ -60,9 +60,9 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
         ci.cancel();
     }
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ChatScreen;drawStringWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"))
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ChatScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"))
     private void redirectDrawString(ChatScreen chatScreen, TextRenderer textRenderer, String text, int x, int y, int color) {
-        drawStringWithShadow(textRenderer, "> " + ((TextFieldWidgetAccessor) textField).getDisplayText(), x, y, color);
+        drawTextWithShadow(textRenderer, "> " + ((TextFieldWidgetAccessor) textField).getDisplayText(), x, y, color);
     }
 
     @Redirect(method = "*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screen/ChatScreen;text:Ljava/lang/String;", opcode = Opcodes.GETFIELD))
