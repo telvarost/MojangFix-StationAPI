@@ -1,1 +1,1 @@
-- Improve exception handling when failing to retrieve player skin
+- Fix small bug with chat screen null point exception

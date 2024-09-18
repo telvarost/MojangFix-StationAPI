@@ -53,7 +53,9 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void onTick(CallbackInfo ci) {
-        textField.tick();
+        if (null != textField) {
+            textField.tick();
+        }
         ci.cancel();
     }
 
