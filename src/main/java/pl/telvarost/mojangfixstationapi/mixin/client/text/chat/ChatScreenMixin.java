@@ -45,6 +45,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
 
     @Inject(method = "init", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
+        text = initialMessage;
         textField = new TextFieldWidget(this, textRenderer, 2, height - 14, width - 2, height - 2, initialMessage);
         textField.setFocused(true);
         textField.setMaxLength(100);

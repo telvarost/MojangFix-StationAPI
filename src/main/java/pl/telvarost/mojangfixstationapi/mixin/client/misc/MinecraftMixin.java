@@ -19,6 +19,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.option.GameOptions;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -39,10 +40,16 @@ public abstract class MinecraftMixin {
     @Shadow
     public abstract boolean isWorldRemote();
 
+    @Shadow public GameOptions options;
+
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if ((this.isWorldRemote() || FabricLoader.getInstance().isModLoaded("spc")) && Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
-            this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage("/"));
+        if (this.isWorldRemote() || FabricLoader.getInstance().isModLoaded("spc")) {
+            if (Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
+                this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage("/"));
+            } else if (Keyboard.getEventKey() == this.options.chatKey.code) {
+                this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage(""));
+            }
         }
     }
 

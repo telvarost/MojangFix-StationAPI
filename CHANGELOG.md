@@ -1,1 +1,1 @@
-- Fix small bug with chat screen null point exception
+- Fix bugs with command keybinding
