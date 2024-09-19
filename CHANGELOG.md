@@ -1,1 +1,1 @@
-- Fix bugs with command keybinding
+- Migrate to biny mappings
