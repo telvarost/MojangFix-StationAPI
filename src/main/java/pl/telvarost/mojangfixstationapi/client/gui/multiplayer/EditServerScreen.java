@@ -92,8 +92,8 @@ public class EditServerScreen extends Screen {
         this.renderBackground();
         TranslationStorage translations = TranslationStorage.getInstance();
         this.drawCenteredTextWithShadow(this.textRenderer, (this.server == null ? translations.get("multiplayer.mojangfixstationapi.addServer") : translations.get("multiplayer.mojangfixstationapi.editServerInfo")), this.width / 2, 20, 16777215);
-        this.drawStringWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverName"), this.width / 2 - 100, 47, 10526880);
-        this.drawStringWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverAddress"), this.width / 2 - 100, 94, 10526880);
+        this.drawTextWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverName"), this.width / 2 - 100, 47, 10526880);
+        this.drawTextWithShadow(this.textRenderer, translations.get("multiplayer.mojangfixstationapi.serverAddress"), this.width / 2 - 100, 94, 10526880);
         this.nameTextField.render();
         this.ipTextField.render();
         super.render(mouseX, mouseY, delta);

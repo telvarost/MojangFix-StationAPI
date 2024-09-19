@@ -25,7 +25,7 @@ import pl.telvarost.mojangfixstationapi.mixin.client.ScreenAccessor;
 
 @Mixin(Screen.class)
 public class ScreenMixin {
-    @Redirect(method = "*", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/Screen;buttonClicked(Lnet/minecraft/client/gui/widget/ButtonWidget;)V"))
+    @Redirect(method = "mouseClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/Screen;buttonClicked(Lnet/minecraft/client/gui/widget/ButtonWidget;)V"))
     private void onActionPerformed(Screen screen, ButtonWidget button) {
         if (button instanceof CallbackButtonWidget) {
             CallbackButtonWidget buttonWidget = (CallbackButtonWidget) button;

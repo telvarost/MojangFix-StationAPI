@@ -56,13 +56,13 @@ public class MultiplayerServerListWidget extends EntryListWidget {
     @Override
     protected void renderEntry(int index, int x, int y, int l, Tessellator arg) {
         ServerData server = this.parent.getServersList().get(index);
-        this.parent.drawStringWithShadow(this.parent.getFontRenderer(), server.getName(), x + 2, y + 1, 0xffffff);
+        this.parent.drawTextWithShadow(this.parent.getFontRenderer(), server.getName(), x + 2, y + 1, 0xffffff);
         if (Config.config.disableServerListIpAddresses) {
             TranslationStorage translations = TranslationStorage.getInstance();
             String hideIp = "(" + translations.get("multiplayer.mojangfixstationapi.hidden") + ")";
-            this.parent.drawStringWithShadow(this.parent.getFontRenderer(), hideIp, x + 2, y + 12, 0x808080);
+            this.parent.drawTextWithShadow(this.parent.getFontRenderer(), hideIp, x + 2, y + 12, 0x808080);
         } else {
-            this.parent.drawStringWithShadow(this.parent.getFontRenderer(), server.getIp(), x + 2, y + 12, 0x808080);
+            this.parent.drawTextWithShadow(this.parent.getFontRenderer(), server.getIp(), x + 2, y + 12, 0x808080);
         }
     }
 }

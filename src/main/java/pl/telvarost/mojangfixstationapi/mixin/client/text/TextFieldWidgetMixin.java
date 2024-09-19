@@ -95,9 +95,9 @@ public class TextFieldWidgetMixin implements TextFieldWidgetAccessor {
         this.text = (new StringBuilder(this.text)).insert(this.text.length() + this.cursorPosition, text).toString();
     }
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/TextFieldWidget;drawStringWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"))
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/TextFieldWidget;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"))
     private void onDrawTextBox(TextFieldWidget guiTextField, TextRenderer textRenderer, String text, int x, int y, int color) {
-        guiTextField.drawStringWithShadow(textRenderer, this.getDisplayText(), x, y, color);
+        guiTextField.drawTextWithShadow(textRenderer, this.getDisplayText(), x, y, color);
     }
 
     public String getDisplayText() {

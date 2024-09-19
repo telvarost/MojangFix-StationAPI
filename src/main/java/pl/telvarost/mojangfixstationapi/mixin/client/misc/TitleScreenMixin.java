@@ -27,6 +27,6 @@ import pl.telvarost.mojangfixstationapi.MojangFixStationApiMod;
 public abstract class TitleScreenMixin extends Screen {
     @Inject(method = "render", at = @At("RETURN"))
     private void onDrawScreen(CallbackInfo ci) {
-        this.drawStringWithShadow(this.textRenderer, MojangFixStationApiMod.getMetadata().getName() + " " + MojangFixStationApiMod.getVersion(), 2, 2 + 10, 0x505050);
+        this.drawTextWithShadow(this.textRenderer, MojangFixStationApiMod.getMetadata().getName() + " " + MojangFixStationApiMod.getVersion(), 2, 2 + 10, 0x505050);
     }
 }

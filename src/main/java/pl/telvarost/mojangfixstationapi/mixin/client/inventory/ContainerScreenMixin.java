@@ -16,9 +16,9 @@
 package pl.telvarost.mojangfixstationapi.mixin.client.inventory;
 
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.container.ContainerScreen;
-import net.minecraft.inventory.Container;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -33,13 +33,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.HashSet;
 import java.util.Set;
 
-@Mixin(ContainerScreen.class)
+@Mixin(HandledScreen.class)
 public abstract class ContainerScreenMixin extends Screen {
     @Shadow
     protected abstract Slot getSlotAt(int x, int y);
 
     @Shadow
-    public Container container;
+    public ScreenHandler container;
 
     @Shadow
     protected abstract boolean isPointOverSlot(Slot slot, int x, int Y);
@@ -77,13 +77,13 @@ public abstract class ContainerScreenMixin extends Screen {
     @Unique
     private boolean drawingHoveredSlot;
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/container/ContainerScreen;isPointOverSlot(Lnet/minecraft/screen/slot/Slot;II)Z"))
-    private boolean redirectIsPointOverSlot(ContainerScreen guiContainer, Slot slot, int x, int y) {
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;isPointOverSlot(Lnet/minecraft/screen/slot/Slot;II)Z"))
+    private boolean redirectIsPointOverSlot(HandledScreen guiContainer, Slot slot, int x, int y) {
         return (drawingHoveredSlot = hoveredSlots.contains(slot)) || isPointOverSlot(slot, x, y);
     }
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/container/ContainerScreen;fillGradient(IIIIII)V", ordinal = 0))
-    private void redirectFillGradient(ContainerScreen instance, int startX, int startY, int endX, int endY, int colorStart, int colorEnd) {
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;fillGradient(IIIIII)V", ordinal = 0))
+    private void redirectFillGradient(HandledScreen instance, int startX, int startY, int endX, int endY, int colorStart, int colorEnd) {
         if (colorStart != colorEnd) throw new AssertionError();
         int color = drawingHoveredSlot ? 0x20ffffff : colorStart;
         this.fillGradient(startX, startY, endX, endY, color, color);

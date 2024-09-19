@@ -16,7 +16,7 @@
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameHud.class)
-public class InGameHudMixin extends DrawableHelper {
+public class InGameHudMixin extends DrawContext {
     @Shadow
     private Minecraft minecraft;
 
@@ -36,6 +36,6 @@ public class InGameHudMixin extends DrawableHelper {
             slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;debugHud:Z"))
     )
     private void onRenderGameOverlay(CallbackInfo ci) {
-        this.drawStringWithShadow(this.minecraft.textRenderer, "Seed: " + this.minecraft.world.getSeed(), 2, 88 + 8 + 8, 0xe0e0e0);
+        this.drawTextWithShadow(this.minecraft.textRenderer, "Seed: " + this.minecraft.world.getSeed(), 2, 88 + 8 + 8, 0xe0e0e0);
     }
 }
