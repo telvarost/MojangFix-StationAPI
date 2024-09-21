@@ -7,6 +7,7 @@ A [StationAPI](https://modrinth.com/mod/stationapi) version of [MojangFix](https
 
 ![mintoyatsu standing with a working skin](https://user-images.githubusercontent.com/35262707/158473931-1ae3ea4f-4673-4baa-aa3d-044275d462ea.png)
 - Added ability to raise slim skin shoulders with GlassConfigAPI
+- Added ability to toggle rendering the player cape with GlassConfigAPI
 </details>
 
 <details><summary>Authentication fix</summary>
