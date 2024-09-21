@@ -1,1 +1,2 @@
+- Add ability to toggle off/on cape
 - Migrate to biny mappings

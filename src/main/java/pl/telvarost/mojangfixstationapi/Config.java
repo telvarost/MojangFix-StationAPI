@@ -96,6 +96,9 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public Boolean prioritizeMojangProvider = false;
 
+        @ConfigName("Render Cape")
+        public Boolean renderCape = true;
+
         @ConfigName("Raise Slim Skin Shoulders")
         @Comment("Restart required for changes to take effect")
         public Boolean raiseSlimSkinShoulders = false;

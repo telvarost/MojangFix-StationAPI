@@ -24,7 +24,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.Config;
 import pl.telvarost.mojangfixstationapi.mixinterface.PlayerEntityRendererAccessor;
 import pl.telvarost.mojangfixstationapi.client.skinfix.PlayerEntityModel;
 
@@ -65,5 +67,19 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer imp
     @Inject(method = "render(Lnet/minecraft/entity/player/PlayerEntity;DDDFF)V", at = @At("RETURN"))
     private void fixOuterLayer$2(CallbackInfo ci) {
         GL11.glDisable(GL11.GL_BLEND);
+    }
+
+
+    @Redirect(method = "method_827(Lnet/minecraft/entity/player/PlayerEntity;F)V",
+            at = @At(value = "INVOKE",
+                     target = "Lnet/minecraft/client/render/entity/model/BipedEntityModel;renderCape(F)V"
+            )
+    )
+    protected void mojangFixStationApi_method_827(BipedEntityModel instance, float v) {
+        if (Config.config.renderCape) {
+            instance.renderCape(v);
+        } else {
+            return;
+        }
     }
 }
