@@ -35,4 +35,8 @@ public class PlayerProfile {
         this.capeUrl = capeUrl;
         this.model = model;
     }
+
+    public UUID getUuid() {
+        return uuid;
+    }
 }
