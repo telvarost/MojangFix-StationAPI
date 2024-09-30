@@ -55,13 +55,22 @@ public class SkinService {
         if (playerProfile == null) return;
 
         PlayerEntityAccessor accessor = (PlayerEntityAccessor) player;
-        GameProfile.TextureModel model = MinecraftSkinFetcher.hasSlimArms(String.valueOf(playerProfile.getUuid())) ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
-        accessor.setTextureModel(model);
-        player.skinUrl = MinecraftSkinFetcher.getSkinUrl(String.valueOf(playerProfile.getUuid()));
-        String capeUrl = MinecraftSkinFetcher.getCapeUrl(String.valueOf(playerProfile.getUuid()));
-        if (!capeUrl.isEmpty()) {
-            player.capeUrl = player.playerCapeUrl = capeUrl;
+
+        String mojang_skinurl = MinecraftSkinFetcher.getSkinUrl(String.valueOf(playerProfile.getUuid()));
+        if (!mojang_skinurl.isEmpty()) {
+            GameProfile.TextureModel model = MinecraftSkinFetcher.hasSlimArms(String.valueOf(playerProfile.getUuid())) ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
+            accessor.setTextureModel(model);
+            player.skinUrl = mojang_skinurl;
+            String capeUrl = MinecraftSkinFetcher.getCapeUrl(String.valueOf(playerProfile.getUuid()));
+            if (!capeUrl.isEmpty()) {
+                player.capeUrl = player.playerCapeUrl = capeUrl;
+            }
+        } else {
+            accessor.setTextureModel(playerProfile.getModel());
+            player.skinUrl = playerProfile.getSkinUrl();
+            player.capeUrl = player.playerCapeUrl = playerProfile.getCapeUrl();
         }
+
         MinecraftAccessor.getInstance().worldRenderer.loadEntitySkin(player);
     }
 
@@ -107,11 +116,7 @@ public class SkinService {
         try {
             if (profiles.containsKey(name)) return;
 
-            if (Config.config.prioritizeMojangProvider){
-                providers = Arrays.asList(new MojangProfileProvider(), new AshconProfileProvider());
-            } else {
-                providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());
-            }
+            providers = Arrays.asList(new MojangProfileProvider(), new AshconProfileProvider());
 
             for (ProfileProvider provider : providers) {
                 GameProfile profile;
