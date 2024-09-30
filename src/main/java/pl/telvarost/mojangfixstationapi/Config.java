@@ -92,10 +92,6 @@ public class Config {
         @Comment("Restart required for changes to take effect")
         public String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
 
-        @ConfigName("Prioritize Mojang As Skin Provider")
-        @Comment("Restart required for changes to take effect")
-        public Boolean prioritizeMojangProvider = false;
-
         @ConfigName("Render Player Capes")
         public Boolean renderCape = true;
 

@@ -53,7 +53,6 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
                 Config.config.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
                 Config.config.enableQuitButton = configObject.getBoolean("enableQuitButton", true);
                 Config.config.useResourcesDownloadURL = configObject.getBoolean("useResourcesDownloadURL", true);
-                Config.config.prioritizeMojangProvider = configObject.getBoolean("prioritizeMojangProvider", false);
                 Config.config.enableMojangFixTextOnTitleScreen = configObject.getBoolean("enableMojangFixTextOnTitleScreen", true);
                 Config.config.enableInventoryChanges = configObject.getBoolean("enableInventoryChanges", true);
                 Config.config.enableMultiplayerServerChanges = configObject.getBoolean("enableMultiplayerServerChanges", true);
