@@ -30,7 +30,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class SkinService {
@@ -49,16 +48,20 @@ public class SkinService {
     private List<ProfileProvider> providers = Arrays.asList(new AshconProfileProvider(), new MojangProfileProvider());
 
     private static GameProfile.TextureModel getTextureModelForUUID(UUID uuid) {
-        return (uuid.hashCode() & 1) != 0 ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
+        return MinecraftSkinFetcher.hasSlimArms(String.valueOf(uuid)) ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
     }
 
     private void updatePlayer(PlayerEntity player, PlayerProfile playerProfile) {
         if (playerProfile == null) return;
 
         PlayerEntityAccessor accessor = (PlayerEntityAccessor) player;
-        accessor.setTextureModel(playerProfile.getModel());
-        player.skinUrl = playerProfile.getSkinUrl();
-        player.capeUrl = player.playerCapeUrl = playerProfile.getCapeUrl();
+        GameProfile.TextureModel model = MinecraftSkinFetcher.hasSlimArms(String.valueOf(playerProfile.getUuid())) ? GameProfile.TextureModel.SLIM : GameProfile.TextureModel.NORMAL;
+        accessor.setTextureModel(model);
+        player.skinUrl = MinecraftSkinFetcher.getSkinUrl(String.valueOf(playerProfile.getUuid()));
+        String capeUrl = MinecraftSkinFetcher.getCapeUrl(String.valueOf(playerProfile.getUuid()));
+        if (!capeUrl.isEmpty()) {
+            player.capeUrl = player.playerCapeUrl = capeUrl;
+        }
         MinecraftAccessor.getInstance().worldRenderer.loadEntitySkin(player);
     }
 
