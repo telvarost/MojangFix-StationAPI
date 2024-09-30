@@ -1,2 +1,1 @@
-- Add ability to toggle off/on cape
-- Migrate to biny mappings
+- Directly contact Mojang API to fetch skin and cape
