@@ -112,6 +112,13 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
+spotless {
+    ratchetFrom "origin/master"
+    java {
+        licenseHeaderFile(rootProject.file("HEADER"))
+    }
+}
+
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "cTg2WC1D"
