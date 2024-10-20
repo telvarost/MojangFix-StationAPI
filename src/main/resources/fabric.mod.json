@@ -28,7 +28,7 @@
     ],
     "stationapi:event_bus_server": [
     ],
-    "gcapi": [
+    "gcapi3": [
       "pl.telvarost.mojangfixstationapi.Config"
     ]
   },
@@ -37,6 +37,11 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": "1.0.0-beta.7.3"
+    "minecraft": "1.0.0-beta.7.3",
+    "gcapi3": ">=3.0.1"
+  },
+
+  "recommends": {
+    "modmenu": "*"
   }
 }

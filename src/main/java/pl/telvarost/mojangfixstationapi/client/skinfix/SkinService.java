@@ -71,7 +71,7 @@ public class SkinService {
             player.capeUrl = player.playerCapeUrl = playerProfile.getCapeUrl();
         }
 
-        MinecraftAccessor.getInstance().worldRenderer.loadEntitySkin(player);
+        MinecraftAccessor.getInstance().worldRenderer.notifyEntityAdded(player);
     }
 
     private boolean updatePlayer(PlayerEntity player) {

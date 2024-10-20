@@ -1,6 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.7.3'
-    id 'babric-loom-extension' version '1.7.4'
+    id 'fabric-loom' version '1.7.4'
+    id 'babric-loom-extension' version '1.7.5'
     id 'maven-publish'
     id("com.modrinth.minotaur") version "2.+"
     id "com.diffplug.spotless" version "6.2.2"
@@ -76,6 +76,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
     implementation "blue.endless:jankson:1.2.1"
     implementation("io.github.llamalad7:mixinextras-fabric:${project.properties["mixinextras_version"]}")
+    implementation(include("me.carleslc:Simple-Yaml:1.8.4") as Dependency)
 
     def lombok = "org.projectlombok:lombok:1.18.22"
     compileOnly lombok

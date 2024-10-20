@@ -27,10 +27,10 @@ import pl.telvarost.mojangfixstationapi.Config;
 @Mixin(MinecraftApplet.class)
 public class MinecraftAppletMixin {
     @Shadow
-    private Minecraft field_2832;
+    private Minecraft minecraft;
 
     @Inject(method = "init", at = @At(value = "TAIL"), remap = false)
     public void setIsAppletToFalse(CallbackInfo ci) {
-        this.field_2832.isApplet = false;
+        this.minecraft.isApplet = false;
     }
 }

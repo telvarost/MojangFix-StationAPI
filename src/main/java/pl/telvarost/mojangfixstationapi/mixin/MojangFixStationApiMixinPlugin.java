@@ -1,71 +1,74 @@
-/*
- * Copyright (C) 2024 js6pak
- *
- * This file is part of MojangFixStationAPI.
- *
- * MojangFixStationAPI is free software: you can redistribute it and/or modify it under the terms of the
- * GNU Lesser General Public License as published by the Free Software Foundation, version 3.
- *
- * MojangFixStationAPI is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License along with MojangFixStationAPI. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package pl.telvarost.mojangfixstationapi.mixin;
 
-import blue.endless.jankson.Jankson;
-import blue.endless.jankson.JsonObject;
-import blue.endless.jankson.api.SyntaxError;
 import net.fabricmc.loader.api.FabricLoader;
-import net.glasslauncher.mods.api.gcapi.api.GCAPI;
-import net.modificationstation.stationapi.api.util.Identifier;
+import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import pl.telvarost.mojangfixstationapi.Config;
-import pl.telvarost.mojangfixstationapi.ModHelper;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
+public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
+    public static GlassYamlFile configObject;
+
+    @Override
+    public void onLoad(String mixinPackage) {
+        File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "mojangfixstationapi/config.yml");
+
+        configObject = new GlassYamlFile();
+        try {
+            configObject.load(file);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            //noinspection CallToPrintStackTrace
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String getRefMapperConfig() {
+        return null; // null = default behaviour
+    }
+
+    @Override
+    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
+
+    }
+
+    @Override
+    public List<String> getMixins() {
+        return null; // null = I don't wish to append any mixin
+    }
+
+    @Override
+    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+
+    }
+
+    @Override
+    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+
+    }
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (ModHelper.ModHelperFields.loadMixinConfigs) {
-            ModHelper.ModHelperFields.loadMixinConfigs = false;
-
-            try {
-                JsonObject configObject = Jankson
-                        .builder()
-                        .build()
-                        .load(new File("config/mojangfixstationapi", "config.json"));
-
-                Config.config.enableAuthenticationChanges = configObject.getBoolean("enableAuthenticationChanges", true);
-                Config.config.enableControlsChanges = configObject.getBoolean("enableControlsChanges", true);
-                Config.config.enableBitDepthFix = configObject.getBoolean("enableBitDepthFix", true);
-                Config.config.enableDeathScreenScoreFix = configObject.getBoolean("enableDeathScreenScoreFix", true);
-                Config.config.enableDebugGraphChanges = configObject.getBoolean("enableDebugGraphChanges", true);
-                Config.config.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
-                Config.config.enableQuitButton = configObject.getBoolean("enableQuitButton", true);
-                Config.config.useResourcesDownloadURL = configObject.getBoolean("useResourcesDownloadURL", true);
-                Config.config.enableMojangFixTextOnTitleScreen = configObject.getBoolean("enableMojangFixTextOnTitleScreen", true);
-                Config.config.enableInventoryChanges = configObject.getBoolean("enableInventoryChanges", true);
-                Config.config.enableMultiplayerServerChanges = configObject.getBoolean("enableMultiplayerServerChanges", true);
-                Config.config.enableSkinChanges = configObject.getBoolean("enableSkinChanges", true);
-                Config.config.enableChatChanges = configObject.getBoolean("enableChatChanges", true);
-                Config.config.enableWoodenSignChanges = configObject.getBoolean("enableWoodenSignChanges", true);
-            } catch (IOException ex) {
-                System.out.println("Couldn't read the config file" + ex.toString());
-            } catch (SyntaxError error) {
-                System.out.println("Couldn't read the config file" + error.getMessage());
-                System.out.println(error.getLineMessage());
-            }
-        }
+        Config.config.enableAuthenticationChanges = configObject.getBoolean("enableAuthenticationChanges", true);
+        Config.config.enableControlsChanges = configObject.getBoolean("enableControlsChanges", true);
+        Config.config.enableBitDepthFix = configObject.getBoolean("enableBitDepthFix", true);
+        Config.config.enableDeathScreenScoreFix = configObject.getBoolean("enableDeathScreenScoreFix", true);
+        Config.config.enableDebugGraphChanges = configObject.getBoolean("enableDebugGraphChanges", true);
+        Config.config.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
+        Config.config.enableQuitButton = configObject.getBoolean("enableQuitButton", true);
+        Config.config.useResourcesDownloadURL = configObject.getBoolean("useResourcesDownloadURL", true);
+        Config.config.enableInventoryChanges = configObject.getBoolean("enableInventoryChanges", true);
+        Config.config.enableMultiplayerServerChanges = configObject.getBoolean("enableMultiplayerServerChanges", true);
+        Config.config.enableSkinChanges = configObject.getBoolean("enableSkinChanges", true);
+        Config.config.enableChatChanges = configObject.getBoolean("enableChatChanges", true);
+        Config.config.enableWoodenSignChanges = configObject.getBoolean("enableWoodenSignChanges", true);
 
         if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.auth.ClientNetworkHandlerMixin")) {
             return Config.config.enableAuthenticationChanges;
@@ -103,8 +106,6 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
             return Config.config.useResourcesDownloadURL;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ScreenMixin")) {
             return (Config.config.enableControlsChanges || Config.config.enableMultiplayerServerChanges);
-        } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.TitleScreenMixin")) {
-            return Config.config.enableMojangFixTextOnTitleScreen;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.ReturnToMainMenuMixin")) {
             return Config.config.enableMultiplayerServerChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.TitleScreenMixin")) {
@@ -144,37 +145,5 @@ public final class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin 
         } else {
             return true;
         }
-    }
-
-    // Boilerplate
-
-    @Override
-    public void onLoad(String mixinPackage) {
-
-    }
-
-    @Override
-    public String getRefMapperConfig() {
-        return null;
-    }
-
-    @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
-
-    }
-
-    @Override
-    public List<String> getMixins() {
-        return null;
-    }
-
-    @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
-    }
-
-    @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
     }
 }

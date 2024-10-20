@@ -77,7 +77,7 @@ public class ControlsOptionsScreenMixin extends Screen {
         this.controlsList.render(mouseX, mouseY, delta);
     }
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/option/KeybindsScreen;method_1943()I"), cancellable = true)
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/option/KeybindsScreen;getControlsListX()I"), cancellable = true)
     private void onDrawButtons(int mouseX, int mouseY, float delta, CallbackInfo ci) {
         doneButton.render(this.minecraft, mouseX, mouseY);
         ci.cancel();

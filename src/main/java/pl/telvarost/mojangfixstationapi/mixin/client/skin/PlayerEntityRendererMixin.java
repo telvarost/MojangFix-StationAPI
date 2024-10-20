@@ -70,7 +70,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer imp
     }
 
 
-    @Redirect(method = "method_827(Lnet/minecraft/entity/player/PlayerEntity;F)V",
+    @Redirect(method = "renderMore(Lnet/minecraft/entity/player/PlayerEntity;F)V",
             at = @At(value = "INVOKE",
                      target = "Lnet/minecraft/client/render/entity/model/BipedEntityModel;renderCape(F)V"
             )

@@ -1,1 +1,2 @@
-- Directly contact Mojang API to fetch skin and cape
+- Migrate to GCAPI3 (the latest version of GlassConfigAPI)
+- Allow version text to be toggled without requiring a restart

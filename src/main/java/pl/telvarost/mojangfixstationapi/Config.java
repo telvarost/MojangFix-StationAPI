@@ -16,91 +16,126 @@
 package pl.telvarost.mojangfixstationapi;
 
 import blue.endless.jankson.Comment;
-import net.glasslauncher.mods.api.gcapi.api.ConfigName;
-import net.glasslauncher.mods.api.gcapi.api.GConfig;
-import net.glasslauncher.mods.api.gcapi.api.MaxLength;
+import net.glasslauncher.mods.gcapi3.api.*;
 
 public class Config {
 
-    @GConfig(value = "config", visibleName = "MojangFixStationAPI Config")
+    @ConfigRoot(value = "config", visibleName = "MojangFixStationAPI")
     public static ConfigFields config = new ConfigFields();
 
     public static class ConfigFields {
 
-        @ConfigName("Disable Server List IP Addresses")
-        @Comment("Hides IP addresses for the server list only")
+        @ConfigEntry(
+                name = "Disable Server List IP Addresses",
+                description = "Hides IP addresses for the server list only"
+        )
         public Boolean disableServerListIpAddresses = false;
 
-        @ConfigName("Enable Authentication Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Authentication Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableAuthenticationChanges = true;
 
-        @ConfigName("Enable Bit Depth Fix")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Bit Depth Fix",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableBitDepthFix = true;
 
-        @ConfigName("Enable Controls Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Controls Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableControlsChanges = true;
 
-        @ConfigName("Enable Chat Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Chat Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableChatChanges = true;
 
-        @ConfigName("Enable Death Screen Score Fix")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Death Screen Score Fix",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableDeathScreenScoreFix = true;
 
-        @ConfigName("Enable Debug Graph Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Debug Graph Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableDebugGraphChanges = true;
 
-        @ConfigName("Enable Debug Graph Toggle As KEYBIND+F3")
-        @Comment("False=Toggle debug graph with just KEYBIND")
+        @ConfigEntry(
+                name = "Enable Debug Graph Toggle As KEYBIND+F3",
+                description = "False=Toggle debug graph with just KEYBIND"
+        )
         public Boolean enableDebugGraphModernToggle = true;
 
-        @ConfigName("Enable Debug Menu World Seed")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Debug Menu World Seed",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableDebugMenuWorldSeed = true;
 
-        @ConfigName("Enable Inventory Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Inventory Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableInventoryChanges = true;
 
-        @ConfigName("Enable MojangFix Text On Title Screen")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable MojangFix Text On Title Screen"
+        )
         public Boolean enableMojangFixTextOnTitleScreen = true;
 
-        @ConfigName("Enable Multiplayer Server Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Multiplayer Server Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableMultiplayerServerChanges = true;
 
-        @ConfigName("Enable Skin Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Skin Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableSkinChanges = true;
 
-        @ConfigName("Enable Wooden Sign Changes")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Wooden Sign Changes",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableWoodenSignChanges = true;
 
-        @ConfigName("Enable Quit Button")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Enable Quit Button",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean enableQuitButton = true;
 
-        @ConfigName("Minecraft Resources Download URL")
-        @MaxLength(4096)
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Minecraft Resources Download URL",
+                description = "Restart required for changes to take effect",
+                maxLength = 4096
+        )
         public String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
 
-        @ConfigName("Render Player Capes")
+        @ConfigEntry(
+                name = "Render Player Capes"
+        )
         public Boolean renderCape = true;
 
-        @ConfigName("Raise Slim Skin Shoulders")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Raise Slim Skin Shoulders",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean raiseSlimSkinShoulders = false;
 
-        @ConfigName("Use Resources Download URL")
-        @Comment("Restart required for changes to take effect")
+        @ConfigEntry(
+                name = "Use Resources Download URL",
+                description = "Restart required for changes to take effect"
+        )
         public Boolean useResourcesDownloadURL = true;
     }
 }

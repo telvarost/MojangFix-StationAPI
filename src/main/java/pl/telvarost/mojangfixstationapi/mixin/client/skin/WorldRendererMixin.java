@@ -32,7 +32,7 @@ import pl.telvarost.mojangfixstationapi.mixinterface.SkinImageProcessorAccessor;
 
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
-    @Inject(method = "unloadEntitySkin", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "notifyEntityRemoved", at = @At("HEAD"), cancellable = true)
     private void dontUnloadLocalPlayerSkin(Entity entity, CallbackInfo ci) {
         if (entity instanceof ClientPlayerEntity) {
             ci.cancel();
@@ -42,13 +42,13 @@ public class WorldRendererMixin {
     @Unique
     private Entity currentEntity; // I hate this but there is no way to get it from @ModifyArg
 
-    @Inject(method = "loadEntitySkin", at = @At("HEAD"))
+    @Inject(method = "notifyEntityAdded", at = @At("HEAD"))
     private void getEnttity(Entity entity, CallbackInfo ci) {
         currentEntity = entity;
     }
 
     @ModifyArg(
-        method = "loadEntitySkin", index = 1,
+        method = "notifyEntityAdded", index = 1,
         at = @At(value = "INVOKE", target = "Lnet/minecraft/client/texture/TextureManager;downloadImage(Ljava/lang/String;Lnet/minecraft/client/texture/ImageProcessor;)Lnet/minecraft/client/texture/ImageDownload;", ordinal = 0)
     )
     private ImageProcessor redirectSkinProcessor(ImageProcessor def) {
@@ -61,7 +61,7 @@ public class WorldRendererMixin {
     }
 
     @ModifyArg(
-        method = "loadEntitySkin", index = 1,
+        method = "notifyEntityAdded", index = 1,
         at = @At(value = "INVOKE", target = "Lnet/minecraft/client/texture/TextureManager;downloadImage(Ljava/lang/String;Lnet/minecraft/client/texture/ImageProcessor;)Lnet/minecraft/client/texture/ImageDownload;", ordinal = 1)
     )
     private ImageProcessor redirectCapeProcessor(ImageProcessor def) {
