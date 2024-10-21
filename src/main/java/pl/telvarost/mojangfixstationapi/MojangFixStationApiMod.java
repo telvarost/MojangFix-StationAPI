@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 public class MojangFixStationApiMod implements ModInitializer {
     private static Logger LOGGER;
     private static ModMetadata METADATA;
+    public static boolean isRetroCommandsLoaded;
 
     @Override
     public void onInitialize() {
@@ -34,6 +35,10 @@ public class MojangFixStationApiMod implements ModInitializer {
 
         METADATA = mod.getMetadata();
         LOGGER = LoggerFactory.getLogger(METADATA.getName());
+
+        isRetroCommandsLoaded = (  FabricLoader.getInstance().isModLoaded("spc")
+                                || FabricLoader.getInstance().isModLoaded("retrocommands")
+                                );
     }
 
     public static Logger getLogger() {

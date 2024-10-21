@@ -15,7 +15,6 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -26,8 +25,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import pl.telvarost.mojangfixstationapi.KeyBindingListener;
-import pl.telvarost.mojangfixstationapi.ModHelper;
+import pl.telvarost.mojangfixstationapi.MojangFixStationApiMod;
 import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
 import pl.telvarost.mojangfixstationapi.mixinterface.ChatScreenAccessor;
 
@@ -44,7 +42,7 @@ public abstract class MinecraftMixin {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;isWorldRemote()Z", ordinal = 0))
     private void onKey(CallbackInfo ci) {
-        if (this.isWorldRemote() || FabricLoader.getInstance().isModLoaded("spc")) {
+        if (this.isWorldRemote() || MojangFixStationApiMod.isRetroCommandsLoaded) {
             if (Keyboard.getEventKey() == MojangFixStationApiClientMod.COMMAND_KEYBIND.code) {
                 this.setScreen(((ChatScreenAccessor) new ChatScreen()).setInitialMessage("/"));
             } else if (Keyboard.getEventKey() == this.options.chatKey.code) {
