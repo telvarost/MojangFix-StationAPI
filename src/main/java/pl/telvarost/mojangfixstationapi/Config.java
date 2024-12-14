@@ -119,7 +119,7 @@ public class Config {
                 description = "Restart required for changes to take effect",
                 maxLength = 4096
         )
-        public String RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
+        public String RESOURCES_DOWNLOAD_URL = "http://s3.betacraft.uk:11705/MinecraftResources/";
 
         @ConfigEntry(
                 name = "Render Player Capes"

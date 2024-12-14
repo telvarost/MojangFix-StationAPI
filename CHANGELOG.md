@@ -1,1 +1,1 @@
-- Always include JSON library with mod
+- Update default Minecraft resources URL for downloading sounds
