@@ -111,9 +111,9 @@ dependencies {
         transitive false
     }
 
-//	modImplementation("com.github.paulevsGitch:BHCreative:${project.bhcreative_version}"){
-//		transitive false
-//	}
+	modImplementation("com.github.paulevsGitch:BHCreative:${project.bhcreative_version}"){
+		transitive false
+	}
 
 //	modRuntimeOnly ("com.github.matthewperiut:stapi-fast-intro:17a7ed0") {
 //		transitive false

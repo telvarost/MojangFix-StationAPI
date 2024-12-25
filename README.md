@@ -55,7 +55,7 @@ Allows the server to verify that the connecting player is logged in
 ## Installation using Prism Launcher
 
 1. Download an instance of Babric for Prism Launcher: https://github.com/Glass-Series/babric-prism-instance
-2. Install Java 17, set the instance to use it, and disable compatibility checks on the instance: https://adoptium.net/temurin/releases/
+2. Install Java 17 and set the instance to use it: https://adoptium.net/temurin/releases/
 3. Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
 4. Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
 5. Add GlassConfigAPI 3.0.1+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
