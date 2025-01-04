@@ -74,6 +74,7 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
         Config.config.enableAuthenticationChanges = configObject.getBoolean("enableAuthenticationChanges", true);
         Config.config.enableControlsChanges = configObject.getBoolean("enableControlsChanges", true);
         Config.config.enableBitDepthFix = configObject.getBoolean("enableBitDepthFix", true);
+        Config.config.enableCommandKey = configObject.getBoolean("enableCommandKey", true);
         Config.config.enableDeathScreenScoreFix = configObject.getBoolean("enableDeathScreenScoreFix", true);
         Config.config.enableDebugGraphChanges = configObject.getBoolean("enableDebugGraphChanges", true);
         Config.config.enableDebugMenuWorldSeed = configObject.getBoolean("enableDebugMenuWorldSeed", true);
@@ -106,6 +107,8 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.BitDepthFixMixin")) {
             boolean isUniTweaksLoaded = FabricLoader.getInstance().isModLoaded("unitweaks");
             return (Config.config.enableBitDepthFix && !isUniTweaksLoaded);
+        } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ChatKeyMixin")) {
+            return (Config.config.enableCommandKey || Config.config.enableChatChanges);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DeathScreenMixin")) {
             return Config.config.enableDeathScreenScoreFix;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.DebugGraphMixin")) {

@@ -24,5 +24,6 @@ public class ChatScreenVariables {
     public static TextFieldWidget textField;
     public static String initialMessage = "";
     public static int chatHistoryPosition;
+    public static int chatCursorPosition;
     public static final List<String> CHAT_HISTORY = new ArrayList<>();
 }

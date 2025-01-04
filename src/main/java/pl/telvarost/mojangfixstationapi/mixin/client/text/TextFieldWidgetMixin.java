@@ -25,6 +25,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.telvarost.mojangfixstationapi.ModHelper;
+import pl.telvarost.mojangfixstationapi.client.text.chat.ChatScreenVariables;
 import pl.telvarost.mojangfixstationapi.mixinterface.TextFieldWidgetAccessor;
 
 @Mixin(TextFieldWidget.class)
@@ -89,6 +90,8 @@ public class TextFieldWidgetMixin implements TextFieldWidgetAccessor {
         if (keyCode == Keyboard.KEY_END) {
             this.cursorPosition = 0;
         }
+
+        ChatScreenVariables.chatCursorPosition = this.cursorPosition;
     }
 
     public void write(String text) {

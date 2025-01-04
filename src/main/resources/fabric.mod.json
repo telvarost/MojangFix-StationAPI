@@ -24,7 +24,6 @@
     "stationapi:event_bus": [
     ],
     "stationapi:event_bus_client": [
-      "pl.telvarost.mojangfixstationapi.KeyBindingListener"
     ],
     "stationapi:event_bus_server": [
     ],
@@ -35,6 +34,7 @@
   "mixins": [
     "mojangfixstationapi.mixins.json"
   ],
+
   "depends": {
     "fabricloader": "*",
     "minecraft": "1.0.0-beta.7.3",
@@ -42,6 +42,7 @@
   },
 
   "recommends": {
+    "stationapi": "*",
     "modmenu": "*"
   }
 }

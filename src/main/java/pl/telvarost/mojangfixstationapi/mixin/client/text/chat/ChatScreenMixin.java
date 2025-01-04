@@ -50,6 +50,7 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
         textField.setFocused(true);
         textField.setMaxLength(100);
         chatHistoryPosition = 0;
+        chatCursorPosition = 0;
     }
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
@@ -110,5 +111,6 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
     @Inject(method = "keyPressed", at = @At("TAIL"))
     private void onKeyPressedTail(char character, int keyCode, CallbackInfo ci) {
         textField.keyPressed(character, keyCode);
+        text = textField.getText();
     }
 }

@@ -41,6 +41,8 @@ Allows the server to verify that the connecting player is logged in
 <details><summary>Previously unlisted changes</summary>
 
 - Enable Bit Depth Fix
+- Enable Command Keybinding
+  - Used to more quickly open up the chat window and type in a command
 - Enable Death Screen Score Fix
 - Enable Debug Graph Hidden By Default
   - Use the new keybind (default: LCtrl) + F3 to open up debug screen with graph
@@ -56,11 +58,12 @@ Allows the server to verify that the connecting player is logged in
 
 1. Download an instance of Babric for Prism Launcher: https://github.com/Glass-Series/babric-prism-instance
 2. Install Java 17 and set the instance to use it: https://adoptium.net/temurin/releases/
-3. Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
-4. Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
-5. Add GlassConfigAPI 3.0.1+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
-6. Add this mod to the mod folder for the instance: https://github.com/telvarost/MojangFix-StationAPI/releases
-7. Run and enjoy! 👍
+3. Add GlassConfigAPI 3.0.2+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
+4. Add Glass Networking to the mod folder for the instance: https://modrinth.com/mod/glass-networking
+5. (Optional) Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
+6. (Optional) Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
+7. Add this mod to the mod folder for the instance: https://github.com/telvarost/BetaTweaks-StationAPI/releases
+8. Run and enjoy! 👍
 
 ## FAQ
 

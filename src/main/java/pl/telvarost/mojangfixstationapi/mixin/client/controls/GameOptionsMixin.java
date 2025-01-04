@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.Config;
 import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
 
 import java.util.ArrayList;
@@ -35,7 +36,15 @@ public class GameOptionsMixin {
     @Inject(method = {"<init>()V", "<init>(Lnet/minecraft/client/Minecraft;Ljava/io/File;)V"}, at = @At("RETURN"))
     public void onInit(CallbackInfo ci) {
         ArrayList<KeyBinding> newKeys = new ArrayList<>(Arrays.asList(allKeys));
-        newKeys.add(MojangFixStationApiClientMod.COMMAND_KEYBIND);
+
+        if (Config.config.enableCommandKey) {
+            newKeys.add(MojangFixStationApiClientMod.COMMAND_KEYBIND);
+        }
+
+        if (Config.config.enableDebugGraphChanges) {
+            newKeys.add(MojangFixStationApiClientMod.DEBUG_GRAPH_KEYBIND);
+        }
+
         allKeys = newKeys.toArray(new KeyBinding[0]);
     }
 }

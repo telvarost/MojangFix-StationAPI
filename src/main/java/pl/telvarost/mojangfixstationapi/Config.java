@@ -44,6 +44,12 @@ public class Config {
         public Boolean enableBitDepthFix = true;
 
         @ConfigEntry(
+                name = "Enable Command Key",
+                description = "Restart required for changes to take effect"
+        )
+        public Boolean enableCommandKey = true;
+
+        @ConfigEntry(
                 name = "Enable Controls Changes",
                 description = "Restart required for changes to take effect"
         )
@@ -88,7 +94,7 @@ public class Config {
         @ConfigEntry(
                 name = "Enable MojangFix Text On Title Screen"
         )
-        public Boolean enableMojangFixTextOnTitleScreen = true;
+        public Boolean enableMojangFixTextOnTitleScreen = false;
 
         @ConfigEntry(
                 name = "Enable Multiplayer Server Changes",
@@ -115,11 +121,24 @@ public class Config {
         public Boolean enableQuitButton = true;
 
         @ConfigEntry(
+                name = "Minecraft Resources Use Alternate URL",
+                description = "Restart required for changes to take effect"
+        )
+        public Boolean USE_ALTERNATE_RESOURCES_DOWNLOAD_URL = false;
+
+        @ConfigEntry(
                 name = "Minecraft Resources Download URL",
                 description = "Restart required for changes to take effect",
                 maxLength = 4096
         )
         public String RESOURCES_DOWNLOAD_URL = "http://s3.betacraft.uk:11705/MinecraftResources/";
+
+        @ConfigEntry(
+                name = "Minecraft Resources Download URL Alternate",
+                description = "Restart required for changes to take effect",
+                maxLength = 4096
+        )
+        public String ALTERNATE_RESOURCES_DOWNLOAD_URL = "http://mcresources.modification-station.net/MinecraftResources/";
 
         @ConfigEntry(
                 name = "Render Player Capes"
