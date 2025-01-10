@@ -1,5 +1,1 @@
-- Add alternate default Minecraft resources URL for downloading sounds
-- Add/fix enabling the command key config
-- Fix delete key removing the wrong text in chat messages
-- Change default config for render mod version on title screen to false
-- Remove StationAPI dependency (ModMenu still requires StationAPI at the time of this change)
+- Add compatibility with RetroAuth
