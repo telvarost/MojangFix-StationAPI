@@ -86,6 +86,12 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
         Config.config.enableChatChanges = configObject.getBoolean("enableChatChanges", true);
         Config.config.enableWoodenSignChanges = configObject.getBoolean("enableWoodenSignChanges", true);
 
+        if (mixinClassName.startsWith("pl.telvarost.mojangfixstationapi.mixin.client.auth") || mixinClassName.startsWith("pl.telvarost.mojangfixstationapi.mixin.server.auth") || mixinClassName.startsWith("pl.telvarost.mojangfixstationapi.mixin.client.skin")) {
+            if (FabricLoader.getInstance().isModLoaded("retroauth")) {
+                return false;
+            }
+        }
+
         if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.auth.ClientNetworkHandlerMixin")) {
             return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.auth.SessionMixin")) {
