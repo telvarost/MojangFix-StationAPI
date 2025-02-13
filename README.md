@@ -1,6 +1,7 @@
 # MojangFixStationAPI
 A more compatible version of [MojangFix](https://modrinth.com/mod/mojangfix) for Minecraft b1.7.3 with [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) configs to increase the mod's compatibility. Fixes skins, authentication, and more.
 * For more InventoryTweaks (ex: `left-click + drag`) consider : https://modrinth.com/mod/inventorytweaks
+* For better auth/skin fixes use RetroAuth: https://modrinth.com/mod/retroauth
 
 ## Features
 <details><summary>Skin and cape fix (including 1.8+ outer layers)</summary>
