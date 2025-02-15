@@ -127,7 +127,8 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.MinecraftMixin")) {
             return Config.config.enableAuthenticationChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ResourceDownloadThreadMixin")) {
-            return Config.config.useResourcesDownloadURL;
+            boolean isUniTweaksLoaded = FabricLoader.getInstance().isModLoaded("unitweaks");
+            return (Config.config.useResourcesDownloadURL && !isUniTweaksLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.misc.ScreenMixin")) {
             return (Config.config.enableControlsChanges || Config.config.enableMultiplayerServerChanges);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.ReturnToMainMenuMixin")) {

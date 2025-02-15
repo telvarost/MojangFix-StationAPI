@@ -41,6 +41,8 @@ Allows the server to verify that the connecting player is logged in
 
 <details><summary>Previously unlisted changes</summary>
 
+- (New) Disable stats checksum verification
+  - Allows mods to rearrange stats (for instance when converting a vanilla instance to a StationAPI one)
 - Enable Bit Depth Fix
 - Enable Command Keybinding
   - Used to more quickly open up the chat window and type in a command
