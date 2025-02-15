@@ -32,6 +32,12 @@ public class Config {
         public Boolean disableServerListIpAddresses = false;
 
         @ConfigEntry(
+                name = "Disable Stats Checksum Verification",
+                description = "Allows stats to be reorganized by mods"
+        )
+        public Boolean disableStatsChecksumVerification = true;
+
+        @ConfigEntry(
                 name = "Enable Authentication Changes",
                 description = "Restart required for changes to take effect"
         )

@@ -1,1 +1,1 @@
-- Add compatibility with RetroAuth
+- Add ability to skip stats checksum verification
