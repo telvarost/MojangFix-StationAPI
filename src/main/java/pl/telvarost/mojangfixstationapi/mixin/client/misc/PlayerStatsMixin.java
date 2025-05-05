@@ -15,24 +15,28 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.misc;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.stat.PlayerStats;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import pl.telvarost.mojangfixstationapi.Config;
 
 @Mixin(PlayerStats.class)
 public class PlayerStatsMixin {
 
-
-    @Redirect(
+    @WrapOperation(
             method = "deserialize",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/lang/String;equals(Ljava/lang/Object;)Z"
             )
     )
-    private static boolean deserialize(String instance, Object string) {
-        return (Config.config.disableStatsChecksumVerification || instance.equals(string));
+    private static boolean deserialize(String instance, Object string, Operation<Boolean> original) {
+        boolean checksumMismatch = original.call(instance, string);
+
+        checksumMismatch = checksumMismatch || Config.config.disableStatsChecksumVerification;
+
+        return checksumMismatch;
     }
 }

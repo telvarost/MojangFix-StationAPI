@@ -1,2 +1,1 @@
-- Add ability to skip stats checksum verification
-- Disable resources download URLs when UniTweaks is present as UniTweaks also adds the fix
+- Fix stats checksum verification skip

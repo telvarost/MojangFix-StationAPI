@@ -23,6 +23,7 @@
     "client.misc.InGameHudMixin",
     "client.misc.MinecraftAppletMixin",
     "client.misc.MinecraftMixin",
+    "client.misc.PlayerStatsMixin",
     "client.misc.ResourceDownloadThreadMixin",
     "client.misc.ScreenMixin",
     "client.misc.TitleScreenMixin",
