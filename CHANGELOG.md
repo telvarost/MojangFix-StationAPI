@@ -1,1 +1,1 @@
-- Fix stats checksum verification skip
+- Fix bug with disabling chat screen mixins

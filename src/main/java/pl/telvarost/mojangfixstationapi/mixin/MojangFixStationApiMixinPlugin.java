@@ -155,7 +155,7 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
             return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.TextFieldWidgetMixin")) {
             return (Config.config.enableMultiplayerServerChanges || Config.config.enableChatChanges || Config.config.enableWoodenSignChanges);
-        } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.chat.ChatScreenMixin")) {
+        } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.chat.ChatScreenMixin")) {
             return Config.config.enableChatChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.text.chat.SleepingChatScreenMixin")) {
             return Config.config.enableChatChanges;
