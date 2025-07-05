@@ -1,1 +1,2 @@
 - Fix bug with disabling chat screen mixins
+- Fix sleeping chat screen flickering in multiplayer

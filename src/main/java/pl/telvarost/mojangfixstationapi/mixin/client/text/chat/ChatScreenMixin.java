@@ -15,6 +15,7 @@
 
 package pl.telvarost.mojangfixstationapi.mixin.client.text.chat;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -29,6 +30,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import pl.telvarost.mojangfixstationapi.ModHelper;
+import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
 import pl.telvarost.mojangfixstationapi.mixinterface.ChatScreenAccessor;
 import pl.telvarost.mojangfixstationapi.mixinterface.TextFieldWidgetAccessor;
 
@@ -79,6 +81,24 @@ public class ChatScreenMixin extends Screen implements ChatScreenAccessor {
         }
 
         CHAT_HISTORY.add(message);
+    }
+
+    @Redirect(
+            method = "keyPressed",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/Minecraft;setScreen(Lnet/minecraft/client/gui/screen/Screen;)V",
+                    ordinal = 1
+            )
+    )
+    private void onSetScreen(Minecraft instance, Screen screen) {
+        if (MojangFixStationApiClientMod.cancelSetScreenNull) {
+            MojangFixStationApiClientMod.cancelSetScreenNull = false;
+            textField.setText("");
+            text = "";
+        } else {
+            instance.setScreen(screen);
+        }
     }
 
     private void setTextFromHistory() {

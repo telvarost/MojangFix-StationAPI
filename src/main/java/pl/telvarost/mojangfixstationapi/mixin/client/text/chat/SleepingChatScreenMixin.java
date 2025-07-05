@@ -19,10 +19,9 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.SleepingChatScreen;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import pl.telvarost.mojangfixstationapi.client.MojangFixStationApiClientMod;
 
 @Mixin(SleepingChatScreen.class)
 public class SleepingChatScreenMixin extends ChatScreen {
@@ -39,5 +38,12 @@ public class SleepingChatScreenMixin extends ChatScreen {
     @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = Keyboard.KEY_RETURN))
     private int ignoreEnter(int def) {
         return -1;
+    }
+
+    @Inject(method = "keyPressed", at = @At("HEAD"))
+    private void onKeyPressedHead(char character, int keyCode, CallbackInfo ci) {
+        if (keyCode == Keyboard.KEY_RETURN) {
+            MojangFixStationApiClientMod.cancelSetScreenNull = true;
+        }
     }
 }
