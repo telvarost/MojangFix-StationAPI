@@ -1,1 +1,1 @@
-- Fix multiplayer server screen translations when StationAPI is not loaded
+- Fix multiplayer screen translations when StationAPI is not loaded
