@@ -1,2 +1,1 @@
-- Fix bug with disabling chat screen mixins
-- Fix sleeping chat screen flickering in multiplayer
+- Fix multiplayer server screen translations when StationAPI is not loaded

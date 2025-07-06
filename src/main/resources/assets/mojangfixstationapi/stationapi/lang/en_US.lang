@@ -1,21 +1,21 @@
-multiplayer.@.hidden=Hidden
+multiplayer.mojangfixstationapi.hidden=Hidden
 
-multiplayer.@.title=Play Multiplayer
-multiplayer.@.edit=Edit
-multiplayer.@.delete=Delete
-multiplayer.@.join=Join Server
-multiplayer.@.connect=Connect
-multiplayer.@.directConnect=Direct Connect
-multiplayer.@.addServer=Add Server
-multiplayer.@.refresh=Refresh
-multiplayer.@.cancel=Cancel
+multiplayer.mojangfixstationapi.title=Play Multiplayer
+multiplayer.mojangfixstationapi.edit=Edit
+multiplayer.mojangfixstationapi.delete=Delete
+multiplayer.mojangfixstationapi.join=Join Server
+multiplayer.mojangfixstationapi.connect=Connect
+multiplayer.mojangfixstationapi.directConnect=Direct Connect
+multiplayer.mojangfixstationapi.addServer=Add Server
+multiplayer.mojangfixstationapi.refresh=Refresh
+multiplayer.mojangfixstationapi.cancel=Cancel
 
-multiplayer.@.deleteConfirm1=Are you sure you want to remove this server?
-multiplayer.@.deleteConfirm2=will be lost forever! (A long time!)
+multiplayer.mojangfixstationapi.deleteConfirm1=Are you sure you want to remove this server?
+multiplayer.mojangfixstationapi.deleteConfirm2=will be lost forever! (A long time!)
 
-multiplayer.@.editServerInfo=Edit Server Info
-multiplayer.@.serverName=Server Name
-multiplayer.@.serverAddress=Server Address
-multiplayer.@.badPing=(no connection)
-multiplayer.@.pingTime=ms
-multiplayer.@.polling=Polling...
+multiplayer.mojangfixstationapi.editServerInfo=Edit Server Info
+multiplayer.mojangfixstationapi.serverName=Server Name
+multiplayer.mojangfixstationapi.serverAddress=Server Address
+multiplayer.mojangfixstationapi.badPing=(no connection)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Polling...
