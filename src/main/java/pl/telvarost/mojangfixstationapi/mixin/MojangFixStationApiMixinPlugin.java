@@ -135,6 +135,9 @@ public class MojangFixStationApiMixinPlugin implements IMixinConfigPlugin {
             return Config.config.enableMultiplayerServerChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.TitleScreenMixin")) {
             return Config.config.enableMultiplayerServerChanges;
+        } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.multiplayer.TranslationStorageMixin")) {
+            boolean isStationApiLoaded = FabricLoader.getInstance().isModLoaded("stationapi");
+            return (Config.config.enableMultiplayerServerChanges && !isStationApiLoaded);
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.BipedEntityModelMixin")) {
             return Config.config.enableSkinChanges;
         } else if (mixinClassName.equals("pl.telvarost.mojangfixstationapi.mixin.client.skin.ClientPlayerEntityMixin")) {

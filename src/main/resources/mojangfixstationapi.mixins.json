@@ -29,6 +29,7 @@
     "client.misc.TitleScreenMixin",
     "client.multiplayer.ReturnToMainMenuMixin",
     "client.multiplayer.TitleScreenMixin",
+    "client.multiplayer.TranslationStorageMixin",
     "client.skin.BipedEntityModelMixin",
     "client.skin.ClientPlayerEntityMixin",
     "client.skin.EntityRenderDispatcherMixin",
