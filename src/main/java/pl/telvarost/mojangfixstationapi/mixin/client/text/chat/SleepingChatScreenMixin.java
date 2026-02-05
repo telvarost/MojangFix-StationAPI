@@ -35,7 +35,7 @@ public class SleepingChatScreenMixin extends ChatScreen {
         super.removed();
     }
 
-    @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = Keyboard.KEY_RETURN))
+    @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = 28 /* Keyboard.KEY_RETURN */))
     private int ignoreEnter(int def) {
         return -1;
     }

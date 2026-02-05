@@ -54,7 +54,7 @@ public class TextFieldWidgetMixin implements TextFieldWidgetAccessor {
         ModHelper.ModHelperFields.setClipboardText = true;
     }
 
-    @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = Keyboard.KEY_BACK))
+    @ModifyConstant(method = "keyPressed", constant = @Constant(intValue = 14 /* Keyboard.KEY_BACK */))
     private int cancelRemoveKey(int def) {
         return -1;
     }

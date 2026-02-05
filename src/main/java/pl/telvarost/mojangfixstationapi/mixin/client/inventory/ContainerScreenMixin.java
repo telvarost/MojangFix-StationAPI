@@ -39,7 +39,7 @@ public abstract class ContainerScreenMixin extends Screen {
     protected abstract Slot getSlotAt(int x, int y);
 
     @Shadow
-    public ScreenHandler container;
+    public ScreenHandler handler;
 
     @Shadow
     protected abstract boolean isPointOverSlot(Slot slot, int x, int Y);
@@ -66,7 +66,7 @@ public abstract class ContainerScreenMixin extends Screen {
 
                 hoveredSlots.add(slot);
                 if (hoveredSlots.size() > 1) {
-                    this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 1, false, this.minecraft.player);
+                    this.minecraft.interactionManager.clickSlot(this.handler.syncId, slot.id, 1, false, this.minecraft.player);
                 }
             }
         } else {
@@ -98,19 +98,19 @@ public abstract class ContainerScreenMixin extends Screen {
             if (this.minecraft.player.inventory.getCursorStack() != null)
                 return;
 
-            this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
-            this.minecraft.interactionManager.clickSlot(this.container.syncId, -999, Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) ? 0 : 1, false, this.minecraft.player);
-            this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
+            this.minecraft.interactionManager.clickSlot(this.handler.syncId, slot.id, 0, false, this.minecraft.player);
+            this.minecraft.interactionManager.clickSlot(this.handler.syncId, -999, Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) ? 0 : 1, false, this.minecraft.player);
+            this.minecraft.interactionManager.clickSlot(this.handler.syncId, slot.id, 0, false, this.minecraft.player);
         }
 
         if (keyCode >= Keyboard.KEY_1 && keyCode <= Keyboard.KEY_9) {
-            if (  (null != this.container.slots)
-               && (10 <= this.container.slots.size())
+            if (  (null != this.handler.slots)
+               && (10 <= this.handler.slots.size())
             ) {
                 if (this.minecraft.player.inventory.getCursorStack() == null)
-                    this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
-                this.minecraft.interactionManager.clickSlot(this.container.syncId, (this.container.slots.size() - 10) + keyCode - 1, 0, false, this.minecraft.player);
-                this.minecraft.interactionManager.clickSlot(this.container.syncId, slot.id, 0, false, this.minecraft.player);
+                    this.minecraft.interactionManager.clickSlot(this.handler.syncId, slot.id, 0, false, this.minecraft.player);
+                this.minecraft.interactionManager.clickSlot(this.handler.syncId, (this.handler.slots.size() - 10) + keyCode - 1, 0, false, this.minecraft.player);
+                this.minecraft.interactionManager.clickSlot(this.handler.syncId, slot.id, 0, false, this.minecraft.player);
             }
         }
     }
