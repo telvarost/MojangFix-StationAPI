@@ -1,0 +1,21 @@
+multiplayer.mojangfixstationapi.hidden=Приховано
+
+multiplayer.mojangfixstationapi.title=Гра в мережі
+multiplayer.mojangfixstationapi.edit=Редагувати
+multiplayer.mojangfixstationapi.delete=Видалити
+multiplayer.mojangfixstationapi.join=Під'єднатися
+multiplayer.mojangfixstationapi.connect=Під'єднатися
+multiplayer.mojangfixstationapi.directConnect=Пряме підключен.
+multiplayer.mojangfixstationapi.addServer=Додати сервер
+multiplayer.mojangfixstationapi.refresh=Оновити
+multiplayer.mojangfixstationapi.cancel=Скасувати
+
+multiplayer.mojangfixstationapi.deleteConfirm1=Ви певні, що хочеш видалити цей сервер?
+multiplayer.mojangfixstationapi.deleteConfirm2=буде втрачено назавжди! (На дуже довго!)
+
+multiplayer.mojangfixstationapi.editServerInfo=Ред. інфо. серв.
+multiplayer.mojangfixstationapi.serverName=Назва сервера
+multiplayer.mojangfixstationapi.serverAddress=IP сервера
+multiplayer.mojangfixstationapi.badPing=(немає з’єднання)
+multiplayer.mojangfixstationapi.pingTime=мс
+multiplayer.mojangfixstationapi.polling=Чекаємо...
