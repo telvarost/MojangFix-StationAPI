@@ -1,1 +1,0 @@
-- Fix multiplayer screen translations when StationAPI is not loaded
